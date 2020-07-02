@@ -23,7 +23,7 @@ $(document).ready(() => {
     zipParam = `?${$(".byZip").val()}`;
     queryUrl += zipParam;
   }
-  // console.log(queryUrl); 
+  // console.log(queryUrl);
   // $("brewerySearch").click(() => {});
 });
 
