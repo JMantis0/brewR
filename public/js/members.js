@@ -23,7 +23,7 @@ $(document).ready(() => {
     zipParam = `?${$(".byZip").val()}`;
     queryUrl += zipParam;
   }
-  // console.log(queryUrl); 
+  // console.log(queryUrl);
   // $("brewerySearch").click(() => {});
 });
 
@@ -34,4 +34,3 @@ $.get(queryUrl).then(data => {
 $.get("/api/user_data").then(data => {
   $(".member-name").text(data.email);
 });
-
