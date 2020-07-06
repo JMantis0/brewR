@@ -34,4 +34,3 @@ $.get(queryUrl).then(data => {
 $.get("/api/user_data").then(data => {
   $(".member-name").text(data.email);
 });
-
