@@ -4,12 +4,10 @@ CREATE DATABASE brewr;
 
 USE brewr;
 
-CREATE TABLE brewr_user (
+-- members table is for blog posts
+CREATE TABLE members (
 	id int NOT NULL AUTO_INCREMENT,
-	first_name varchar(255) NOT NULL,
-    last_name varchar(255) NOT NULL,
-    user_name varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
+    post VARCHAR (255) NOT NULL, 
 	PRIMARY KEY (id)
 );
 
@@ -23,5 +21,6 @@ CREATE TABLE brewery_name(
     contact_email VARCHAR(255) NOT NULL,
 	PRIMARY KEY (id)
 );
+
 
 
