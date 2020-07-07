@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <title>brewR - Member Profile</title>
   <meta charset="UTF-8">
@@ -8,10 +7,20 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
     integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="stylesheets/style.css" rel="stylesheet">
 </head>
 
 <body>
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+
+  
+  
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand">brewR</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -39,8 +48,116 @@
       </form>
     </div>
   </nav>
+  
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/logout">
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <h2> <span class="member-name"></span></h2>
+        <div class="searchDiv">
+          <h3 class="brewerysearch">Brewery Search
+        </div>
+        <select id="searchType" class="form-control">
+          <option value="">Search by...</option>
+          <option value="?by_name">Name</option>
+          <option value="?by_city">City</option>
+          <option value="?by_zip">Zip Code</option>
+          <option value="?by_state">State</option>          
+          <option value="?by_type">Brewery Type</option>
+        </select>
+
+        <div class="row-fluid searchDiv">         
+          <input id="searchInput" class="form-control hidden"></input>
+          <select id="stateInput" class="form-control hidden">
+            <option value="">Select State</option>
+            <option value="AL">Alabama</option>
+            <option value="Alaska">Alaska</option>
+            <option value="Arizona">Arizona</option>
+            <option value="Arkansas">Arkansas</option>
+            <option value="California">California</option>
+            <option value="Colorado">Colorado</option>
+            <option value="Connecticut">Connecticut</option>
+            <option value="Delaware">Delaware</option>
+            <option value="District_of_Columbia">District Of Columbia</option>
+            <option value="Florida">Florida</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Hawaii">Hawaii</option>
+            <option value="Idaho">Idaho</option>
+            <option value="Illinois">Illinois</option>
+            <option value="Indiana">Indiana</option>
+            <option value="Iowa">Iowa</option>
+            <option value="Kansas">Kansas</option>
+            <option value="Kentucky">Kentucky</option>
+            <option value="Louisiana">Louisiana</option>
+            <option value="Maine">Maine</option>
+            <option value="Maryland">Maryland</option>
+            <option value="Massachusetts">Massachusetts</option>
+            <option value="Michigan">Michigan</option>
+            <option value="Minnesota">Minnesota</option>
+            <option value="Mississippi">Mississippi</option>
+            <option value="Missouri">Missouri</option>
+            <option value="Montana">Montana</option>
+            <option value="Nebraska">Nebraska</option>
+            <option value="Nevada">Nevada</option>
+            <option value="New_Hampshire">New Hampshire</option>
+            <option value="New_Jersey">New Jersey</option>
+            <option value="New_Mexico">New Mexico</option>
+            <option value="New_York">New York</option>
+            <option value="North_Carolina">North Carolina</option>
+            <option value="North_Dakota">North Dakota</option>
+            <option value="Ohio">Ohio</option>
+            <option value="Oklahoma">Oklahoma</option>
+            <option value="Oregon">Oregon</option>
+            <option value="Pennsylvania">Pennsylvania</option>
+            <option value="Rhode_Island">Rhode Island</option>
+            <option value="South Carolina">South Carolina</option>
+            <option value="South Dakota">South Dakota</option>
+            <option value="Tennessee">Tennessee</option>
+            <option value="Texas">Texas</option>
+            <option value="Utah">Utah</option>
+            <option value="Vermont">Vermont</option>
+            <option value="Virginia">Virginia</option>
+            <option value="WWashington">Washington</option>
+            <option value="West_Virginia">West Virginia</option>
+            <option value="Wisconsin">Wisconsin</option>
+            <option value="Wyoming">Wyoming</option>
+          </select>
+          
+          <!-- Change to select//option -->
+          <select id="typeInput" class="form-control hidden">
+            <!-- get options from api docs -->
+            <option value="">Select Type</option>
+            <option value="micro">Micro Brewery</option>
+            <option value="regional">Regional Brewery</option>
+            <option value="brewpub">Brew Pub</option>
+            <option value="large">Large</option>
+            <option value="planning">Planning</option>
+            <option value="bar">Bar</option>
+            <option value="contract">Contract</option>
+            <button class="btn" id="proprietorBtn"></button>
+            <button class="btn" id="searchBtn">Search</button>
+            <option value="proprietor">Proprietor</option>
+          </select>
+          <button class="btn" id="searchBtn">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>          
+    
+  </script>
   <script type="text/javascript" src="js/members.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
     integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
