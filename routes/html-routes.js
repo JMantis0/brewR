@@ -1,4 +1,5 @@
 // Requiring path to so we can use relative routes to our HTML files
+const db = require("../models");
 const path = require("path");
 
 // Requiring our custom middleware for checking if a user is logged in
@@ -24,12 +25,27 @@ module.exports = function(app) {
   // Here we've added our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    res.render("members");
+    db.Post.findAll({}).then((data) => {
+      console.log(data.Post);
+      res.json(data.Post);
+    });
+    // res.render("members");
   });
 
   // member feed
   app.get("/member-feed", (req, res) => {
-    res.render("member-feed");
+    console.log("success");
+    db.Post.findAll({}).then((data) => {
+      console.log(data);
+      let x = data.map(packet => packet.dataValues.body);
+      console.log(x);
+      obj = [];
+      for (message of x) {
+        obj.push({body:message});
+      }
+      console.log(obj);
+      res.render("member-feed", {Post:obj});
+    });
   });
 
   // brewer page
