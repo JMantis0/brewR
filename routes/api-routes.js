@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const axios = require("axios");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -113,4 +114,35 @@ module.exports = function(app) {
   //     res.json(data).end();
   //   });
   // });
+};
+
+  //  Receive search parameters from client, call open brewery api
+  //  return data for rendering
+  app.get("/members/:type/:search", (req, res) => {
+    let typeMap = {
+        1: "?by_name",
+        2: "?by_city",
+        3: "?by_postal",
+        4: "?by_state",
+        5: "?by_type"
+    }
+    //  Call Open Brewery API within axios.get
+    axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
+    .then(function(response) {
+      let data = response.data;
+     res.render("members.handlebars", {brewery: data}, function(err, html) {
+       if(err) {
+         console.log(err)
+       }
+       console.log(html);
+       res.send(html);
+     })
+     console.log("70")
+    })
+    .catch(function(error) {
+      console.log(error);
+    });
+
+  });
+
 };
