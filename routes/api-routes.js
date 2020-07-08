@@ -65,11 +65,11 @@ module.exports = function(app) {
     }
     //  Call Open Brewery API within axios.get
     axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
-    .then(function(response) {
+    .then(function(brewerySearch) {
     
-      let data = response.data;
-
-      res.send(data);
+      let breweriesInfo = brewerySearch.data;
+      //  Send breweries Info to the front!  Check browser console to see what the response looks like
+      res.send(breweriesInfo);
 
     })
     .catch(function(error) {

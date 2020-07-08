@@ -55,20 +55,19 @@ $(document).ready(() => {
     console.log(searchBy, parameter)
     $.get(`/api/search/${searchBy}/${parameter}`)
     //  get brewery search results back from the server side and render!!
+    //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       breweries.forEach((brewery) => {
-        console.log(brewery);
+        console.log(brewery.name, brewery);
         $("#breweryContainer").append(
         `<div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="card-title">${brewery.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Type:${brewery.brewery_type}</h6>
+            <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
             <p class="card-text">${brewery.city}, ${brewery.state}</p>
-            <a href="${brewery.website_url}" class="card-link">Home Page</a>
-            <a href="#" class="card-link">Another link</a>
+            <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
           </div>
-        </div>`);   
-        console.log("***77***");
+        </div>`);
       });
     });
   });
