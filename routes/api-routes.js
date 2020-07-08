@@ -62,11 +62,11 @@ module.exports = function(app) {
         4: "?by_state",
         5: "?by_type"
     }
-    let queryUrl = `https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}&per_page=20`;
-
+    //  Call Open Brewery API within axios.get
     axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
     .then(function(response) {
-      console.log(response.data)
+      let data = response.data;
+     res.render("members", {brewery: data})
     })
     .catch(function(error) {
       console.log(error);
