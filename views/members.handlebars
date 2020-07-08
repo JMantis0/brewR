@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
   <a class="navbar-brand">brewR</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,14 +109,17 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 </nav>
-{{#each brewery}}
-<div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title">{{name}}</h5>
-    <h6 class="card-subtitle mb-2 text-muted">Type: {{brewery_type}}</h6>
-    <p class="card-text">{{city}}, {{state}}</p>
-    <a href="{{website_url}}" class="card-link">Home Page</a>
-    <a href="#" class="card-link">Another link</a>
+
+<div class='container' id='breweryContainer'>
+  {{!-- {{#each brewery}}
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{name}}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Type: {{brewery_type}}</h6>
+      <p class="card-text">{{city}}, {{state}}</p>
+      <a href="{{website_url}}" class="card-link">Home Page</a>
+      <a href="#" class="card-link">Another link</a>
+    </div>
   </div>
+{{/each}} --}}
 </div>
-{{/each}}
