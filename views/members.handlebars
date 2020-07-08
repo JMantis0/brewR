@@ -109,4 +109,14 @@
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
 </nav>
-
+{{#each brewery}}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{name}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{website_url}}</h6>
+    <p class="card-text">{{address}}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
+{{/each}}
