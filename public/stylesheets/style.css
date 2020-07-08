@@ -17,3 +17,11 @@ h2 {
 #lightbeermug {
   size: 50%;
 }
+
+.hidden {
+  display: none!important;
+}
+
+.searchBtn {
+  display: inline;
+}
