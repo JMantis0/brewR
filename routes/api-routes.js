@@ -66,7 +66,14 @@ module.exports = function(app) {
     axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
     .then(function(response) {
       let data = response.data;
-     res.render("members", {brewery: data})
+     res.render("members.handlebars", {brewery: data}, function(err, html) {
+       if(err) {
+         console.log(err)
+       }
+       console.log(html);
+       res.send(html);
+     })
+     console.log("70")
     })
     .catch(function(error) {
       console.log(error);
