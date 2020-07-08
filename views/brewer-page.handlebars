@@ -26,19 +26,97 @@
     </div>
   </nav>
 
-  <div class="container">
-    <div class="row">
-      {{!-- confirm brewery response objects are correct --}}
-        {{brewery-name}}
-        {{brewery-type}}
-        {{brewery-street}}
-        {{brewery-city}}
-        {{brewery-state}}
-        {{brewery-postal-code}}
-        {{brewery-phone}}
-        {{brewery-website}}
-        
-       
+  <div class="row my-5 mx-2">
+    <div class="col-3">
+      <div class="alert alert-dark" role="alert">
+        <h5>Add Beer to Profile</h5>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Beer Name</label>
+          <input class="form-control" id="beer-name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Style</label>
+          <input class="form-control" id="style">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">ABV%</label>
+          <input class="form-control" id="beer-name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Hops</label>
+          <input class="form-control" id="beer-name">
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="alert alert-dark" role="alert">
+        <h5>Current Beer List</h5>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="alert alert-dark" role="alert">
+        <h5>Your Brewery Information</h5>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Brewery Name</label>
+          <input class="form-control" id="brewery-name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Address</label>
+          <input class="form-control" id="address">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Phone Number</label>
+          <input class="form-control" id="phone-number">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Dog Friendly</label>
+          <input class="form-control" id="dogs-allowed">
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="alert alert-dark" role="alert">
+        <h5>Hours of Operation</h5>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Monday</label>
+            <input class="form-control" placeholder="9am-7pm" id="brewery-name">
+          </div>
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Tuesday</label>
+            <input class="form-control" placeholder="9am-7pm" id="address">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Wednesday</label>
+            <input class="form-control" placeholder="9am-7pm" id="phone-number">
+          </div>
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Thursday</label>
+            <input class="form-control" placeholder="9am-7pm" id="dogs-allowed">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Friday</label>
+            <input class="form-control" placeholder="9am-7pm" id="open">
+          </div>
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Saturday</label>
+            <input class="form-control" placeholder="9am-7pm" id="close">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-6">
+            <label for="exampleInputEmail1">Sunday</label>
+            <input class="form-control" placeholder="9am-7pm" id="close">
+          </div>
+        </div>
+        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      </div>
     </div>
   </div>
   
