@@ -1,6 +1,11 @@
 $(document).ready(() => {
-
+  //  $("#searchType") is the <select> element that user selects how they'd like to search.
+  //  This event listener detects when a new selection is made by the user.
+  //  Each <option> is set up with a data attribute "value", which contains a piece of
+  //  querystring used to set up the parameter.
   $("#searchType").on("change", function(event) {
+    //  Text of the <option> is used to set up a switch, which makes the appropriate
+    //  input visible, and the other inputs invisible.
     let searchType = this.options[this.selectedIndex].text;
     switch(searchType) {
     case "Name":
@@ -28,33 +33,28 @@ $(document).ready(() => {
     }
   });
 
+  //  When the search button is clicked a queryString bit is constructed using the current
+  //  State of the searchinput and type selector.
   $('#searchBtn').click(function(event) {
+    event.preventDefault();
+    console.log("click")
     let searchBy = $('#searchType')[0].options[$('#searchType')[0].selectedIndex].value;
     let parameter;
     switch(searchBy) {
-    case "?by_zip":
-    case "?by_city":
-    case "?by_name":
+    case "1":
+    case "2":
+    case "3":
       parameter = $('#searchInput').val();
       break;
-    case "?by_state":
+    case "4":
       parameter = $('#stateInput').val();
       break;
-    case "?by_type":
+    case "5":
       parameter = $('#typeInput').val();
     }
-    let queryUrl = `https://api.openbrewerydb.org/breweries${searchBy}=${parameter}&per_page=50`;
-
-
-    $.get(queryUrl).then(function(err, data) {
-      if (err) {
-        console.log(err);
-      }
-      console.log(data);
-    });
-  });
-
-    
+    console.log(searchBy, parameter)
+    $.get(`/members/${searchBy}/${parameter}`);
+  });    
 
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
