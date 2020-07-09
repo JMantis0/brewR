@@ -62,6 +62,9 @@ $(document).ready(() => {
         $("#breweryContainer").append(
         `<div class="card" style="width: 18rem;">
           <div class="card-body">
+            <div class="input-group-text">
+              <input type="checkbox" aria-label="Checkbox for following text input">
+            </div>
             <h5 class="card-title">${brewery.name}</h5>
             <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
             <p class="card-text">${brewery.city}, ${brewery.state}</p>
