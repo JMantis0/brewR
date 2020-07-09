@@ -36,14 +36,14 @@ module.exports = function(app) {
   app.get("/member-feed", (req, res) => {
     console.log("success");
     db.Post.findAll({}).then(data => {
-      console.log(data);
+      console.log(data, "39");
       const x = data.map(packet => packet.dataValues.body);
-      console.log(x);
+      console.log(x, "41");
       obj = [];
       for (message of x) {
         obj.push({ body: message });
       }
-      console.log(obj);
+      console.log(obj, "46");
       res.render("member-feed", { Post: obj });
     });
   });
@@ -51,26 +51,26 @@ module.exports = function(app) {
   // members page blog route (this is the users profile page)
   app.get("/members", (req, res) => {
     db.Post.findAll({}).then(data => {
-      console.log(data);
+      console.log(data, "54");
       const x = data.map(packet => packet.dataValues.body);
-      console.log(x);
+      console.log(x, "56");
       obj = [];
       for (message of x) {
         obj.push({ body: message });
       }
-      console.log(obj);
+      console.log(obj, "61");
       res.render("member-feed", { Post: obj });
       res.render("members", { Post: obj });
     });
   });
 
   // brewer page
-  app.get("/brewer-page", (req, res) => {
+  app.get("/brewer-page", isAuthenticated, (req, res) => {
     res.render("brewer-page");
   });
 
   // brewer feed
-  app.get("/brewer-feed", (req, res) => {
+  app.get("/brewer-feed", isAuthenticated, (req, res) => {
     res.render("brewer-feed");
   });
 
