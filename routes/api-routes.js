@@ -1,4 +1,5 @@
 // Requiring our models and passport as we've configured it
+require("dotenv").config();
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
@@ -64,16 +65,12 @@ module.exports = function(app) {
     }
     //  Call Open Brewery API within axios.get
     axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
-    .then(function(response) {
-      let data = response.data;
-     res.render("members.handlebars", {brewery: data}, function(err, html) {
-       if(err) {
-         console.log(err)
-       }
-       console.log(html);
-       //RENDER NOT WORKING BUT HTML IS CLEARLY BEING CONSTRUCTED
-       res.send(html);
-     })
+    .then(function(brewerySearch) {
+    
+      let breweriesInfo = brewerySearch.data;
+      //  Send breweries Info to the front!  Check browser console to see what the response looks like
+      res.send(breweriesInfo);
+
     })
     .catch(function(error) {
       console.log(error);
