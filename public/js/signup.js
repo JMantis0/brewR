@@ -9,27 +9,37 @@ $(document).ready(() => {
     event.preventDefault();
     const userData = {
       email: emailInput.val().trim(),
-      password: passwordInput.val().trim()
+      password: passwordInput.val().trim(),
+      usertype: $("input[name=signUpUserType]:checked", ".signUpUserType").val()
     };
 
     if (!userData.email || !userData.password) {
       return;
     }
     // If we have an email and password, run the signUpUser function
-    signUpUser(userData.email, userData.password);
+    signUpUser(userData.email, userData.password, userData.usertype);
     emailInput.val("");
     passwordInput.val("");
   });
 
   // Does a post to the signup route. If successful, we are redirected to the members page
   // Otherwise we log any errors
-  function signUpUser(email, password) {
+  function signUpUser(email, password, usertype) {
     $.post("/api/signup", {
       email: email,
-      password: password
+      password: password,
+      usertype: usertype
     })
-      .then(() => {
-        window.location.replace("/members");
+      .then((userInfo) => {
+        //  if user is a brewery then go to /brewer-page
+        let isABrewery = (userInfo.usertype === "brewRy");
+        if(isABrewery) {
+          window.location.replace("/brewer-page")
+        }
+        //  else direct user to /members
+        else {
+          window.location.replace("/members");
+        }
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);
