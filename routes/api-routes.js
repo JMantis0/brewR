@@ -99,50 +99,46 @@ module.exports = function(app) {
   //     res.json(data);
   //   });
   // });
+  // blog posts crud starts here
+  // GET route for getting all of the posts
+  app.get("/api/posts/", (req, res) => {
+    db.Post.findAll({}).then(data => {
+      res.json(data);
+    });
+  });
 
-  // // Get route for retrieving a single post
-  // app.get("/api/posts/:id", (req, res) => {
-  //   db.Post.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(data => {
-  //     res.json(data);
-  //   });
-  // });
 
-  // // POST route for saving a new post
-  // app.post("/api/posts", (req, res) => {
-  //   console.log(req.body);
-  //   db.Post.create({
-  //     title: req.body.title,
-  //     body: req.body.body,
-  //     category: req.body.category
-  //   }).then(data => {
-  //     res.json(data);
-  //   });
-  // });
+  // POST route for saving a new post
+  app.post("/api/posts", (req, res) => {
+    console.log(req.body);
+    db.Post.create({
+      // title: req.body.title,
+      body: req.body.body,
+      // category: req.body.category
+    }).then(data => {
+      res.json(data);
+    });
+  });
 
-  // // DELETE route for deleting posts
-  // app.delete("/api/posts/:id", (req, res) => {
-  //   db.Post.destroy({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   }).then(data => {
-  //     res.json(data).end();
-  //   });
-  // });
+  // DELETE route for deleting posts
+  app.delete("/api/posts/:id", (req, res) => {
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(data => {
+      res.json(data).end();
+    });
+  });
 
-  // // PUT route for updating posts
-  // app.put("/api/posts", (req, res) => {
-  //   db.Post.update(req.body, {
-  //     where: {
-  //       id: req.body.id
-  //     }
-  //   }).then(data => {
-  //     res.json(data).end();
-  //   });
-  // });
-
+  // PUT route for updating posts
+  app.put("/api/posts", (req, res) => {
+    db.Post.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(data => {
+      res.json(data).end();
+    });
+  });
 };
