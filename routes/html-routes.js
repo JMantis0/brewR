@@ -25,10 +25,14 @@ module.exports = function(app) {
   // Here we've added our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
+    // db.Post.findAll({}).then(data => {
+    //   console.log(data.Post);
+    //   res.json(data.Post);
+    // });
     res.render("members");
   });
 
-  // member feed
+  // member feed blog posts (public facing)
   app.get("/member-feed", (req, res) => {
     console.log("success");
     db.Post.findAll({}).then(data => {
@@ -41,6 +45,22 @@ module.exports = function(app) {
       }
       console.log(obj);
       res.render("member-feed", { Post: obj });
+    });
+  });
+
+  // members page blog route (this is the users profile page)
+  app.get("/members", (req, res) => {
+    db.Post.findAll({}).then(data => {
+      console.log(data);
+      const x = data.map(packet => packet.dataValues.body);
+      console.log(x);
+      obj = [];
+      for (message of x) {
+        obj.push({ body: message });
+      }
+      console.log(obj);
+      res.render("member-feed", { Post: obj });
+      res.render("members", { Post: obj });
     });
   });
 
