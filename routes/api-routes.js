@@ -110,7 +110,6 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
-    console.log(req.body);
     db.Post.create({
       // title: req.body.title,
       body: req.body.body,
