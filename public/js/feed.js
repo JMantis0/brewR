@@ -2,21 +2,14 @@
 $(document).ready(() => {
   // blogContainer holds all of our posts
   const blogContainer = $(".blog-container");
-  const postCategorySelect = $("#category");
   // Click events for the edit and delete buttons
   $(document).on("click", "button.delete", handlePostDelete);
-  $(document).on("click", "button.edit", handlePostEdit);
-  postCategorySelect.on("change", handleCategoryChange);
   let posts;
 
   // This function grabs posts from the database and updates the view
-  function getPosts(category) {
-    let categoryString = category || "";
-    if (categoryString) {
-      categoryString = "/category/" + categoryString;
-    }
-    $.get("/api/posts" + categoryString, data => {
-      console.log("Posts", data);
+  function getPosts() {
+    
+    $.get("/api/posts", data => {
       posts = data;
       if (!posts || !posts.length) {
         displayEmpty();
