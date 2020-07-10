@@ -10,6 +10,7 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
+    console.log(req);
     res.json({
       email: req.user.email,
       id: req.user.id,
@@ -110,7 +111,6 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
-    console.log(req.body);
     db.Post.create({
       // title: req.body.title,
       body: req.body.body
