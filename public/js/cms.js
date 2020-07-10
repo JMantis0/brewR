@@ -15,7 +15,7 @@ $(document).ready(() => {
 
   // Getting jQuery references to the post body, title, form, and category select
   const bodyInput = $("#body");
-//   const titleInput = $("#title");
+  //   const titleInput = $("#title");
   const cmsForm = $("#cms");
   const postCategorySelect = $("#category");
   // Giving the postCategorySelect a default value
@@ -29,9 +29,9 @@ $(document).ready(() => {
     }
     // Constructing a newPost object to hand to the database
     const newPost = {
-    //   title: titleInput.val().trim(),
-      body: bodyInput.val().trim(),
-    //   category: postCategorySelect.val()
+      //   title: titleInput.val().trim(),
+      body: bodyInput.val().trim()
+      //   category: postCategorySelect.val()
     };
 
     console.log(newPost);

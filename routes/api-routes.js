@@ -58,26 +58,28 @@ module.exports = function(app) {
   //  Receive search parameters from client, call open brewery api
   //  return data for rendering
   app.get("/api/search/:type/:search", (req, res) => {
-    let typeMap = {
-        1: "?by_name",
-        2: "?by_city",
-        3: "?by_postal",
-        4: "?by_state",
-        5: "?by_type"
-    }
+    const typeMap = {
+      1: "?by_name",
+      2: "?by_city",
+      3: "?by_postal",
+      4: "?by_state",
+      5: "?by_type"
+    };
     //  Call Open Brewery API within axios.get
-    axios.get(`https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${req.params.search}`)
-    .then(function(brewerySearch) {
-    
-      let breweriesInfo = brewerySearch.data;
-      //  Send breweries Info to the front!  Check browser console to see what the response looks like
-      res.send(breweriesInfo);
-
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
-
+    axios
+      .get(
+        `https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${
+          req.params.search
+        }`
+      )
+      .then(brewerySearch => {
+        const breweriesInfo = brewerySearch.data;
+        //  Send breweries Info to the front!  Check browser console to see what the response looks like
+        res.send(breweriesInfo);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   });
 
   // // blog posts crud starts here
@@ -106,13 +108,12 @@ module.exports = function(app) {
     });
   });
 
-
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
     console.log(req.body);
     db.Post.create({
       // title: req.body.title,
-      body: req.body.body,
+      body: req.body.body
       // category: req.body.category
     }).then(data => {
       res.json(data);
@@ -138,6 +139,20 @@ module.exports = function(app) {
       }
     }).then(data => {
       res.json(data).end();
+    });
+  });
+
+  //Brewery routes
+  // POST route for saving a new post
+  app.post("/api/taplist", (req, res) => {
+    console.log(req.body);
+    db.Brewerybeer.create({
+      beername: req.body.beername,
+      beerstyle: req.body.beerstyle,
+      beerabv: req.body.beerabv,
+      beerhops: req.body.beerhops
+    }).then(data => {
+      res.json(data);
     });
   });
 };
