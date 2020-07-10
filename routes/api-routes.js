@@ -41,6 +41,26 @@ module.exports = function(app) {
     res.redirect("/");
   });
 
+  // Route for viewing member public pofile feed
+  app.get("/profilemembers", (req, res) => {
+    res.redirect("/member-feed");
+  });
+
+  // Route for sending user back to member home
+  app.get("/homemembers", (req, res) => {
+    res.redirect("/members");
+  });
+
+  // Route for viewing brewery public profile feed
+  app.get("/profilebrewery", (req, res) => {
+    res.redirect("/brewer-feed");
+  });
+
+  // Route for sending user back to brewery home
+  app.get("/homebrewery", (req, res) => {
+    res.redirect("/brewer-page");
+  });
+
   // Route for getting some data about our user to be used client side
   app.get("/api/user_data", (req, res) => {
     if (!req.user) {
