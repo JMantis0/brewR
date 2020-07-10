@@ -101,11 +101,18 @@ module.exports = function(app) {
   //     res.json(data);
   //   });
   // });
+
+  
   // blog posts crud starts here
   // GET route for getting all of the posts
   app.get("/api/posts/", (req, res) => {
-    db.Post.findAll({}).then(data => {
-      res.json(data);
+    //Get all posts that belong to the current user
+    db.Post.findAll({
+      where: {
+        UserID: req.user.id
+      }
+    }).then(userposts => {
+      res.json(userposts);
     });
   });
 
