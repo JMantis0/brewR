@@ -47,23 +47,7 @@ module.exports = function(app) {
       res.render("member-feed", { Post: obj });
     });
   });
-
-  // members page blog route (this is the users profile page)
-  app.get("/members", (req, res) => {
-    db.Post.findAll({}).then(data => {
-      console.log(data, "54");
-      const x = data.map(packet => packet.dataValues.body);
-      console.log(x, "56");
-      obj = [];
-      for (message of x) {
-        obj.push({ body: message });
-      }
-      console.log(obj, "61");
-      res.render("member-feed", { Post: obj });
-      res.render("members", { Post: obj });
-    });
-  });
-
+  
   // brewer page
   app.get("/brewer-page", isAuthenticated, (req, res) => {
     res.render("brewer-page");
