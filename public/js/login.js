@@ -28,8 +28,16 @@ $(document).ready(() => {
       email: email,
       password: password
     })
-      .then(() => {
+      .then((userInfo) => {
+        //  if user is a brewery then go to /brewer-page
+      let isABrewery = (userInfo.usertype === "brewRy");
+      if(isABrewery) {
+        window.location.replace("/brewer-page")
+      }
+      //  else direct user to /members
+      else {
         window.location.replace("/members");
+      }
         // If there's an error, log the error
       })
       .catch(err => {
