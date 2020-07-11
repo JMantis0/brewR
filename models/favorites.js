@@ -1,15 +1,32 @@
 module.exports = function(sequelize, DataTypes) {
-  const Fave = sequelize.define("favorite_breweries", {
+  const Fave = sequelize.define("Fave", {
+    brewer_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     name: {
+      type: DataTypes.TEXT,
+      allowNull: false
+    },
+    brewery_type: {
       type: DataTypes.TEXT
     },
-    type: {
+    street: {
       type: DataTypes.TEXT
     },
     city: {
       type: DataTypes.TEXT
     },
     state: {
+      type: DataTypes.TEXT
+    },
+    postal_code: {
+      type: DataTypes.TEXT
+    },
+    country: {
+      type: DataTypes.TEXT
+    },
+    phone: {
       type: DataTypes.TEXT
     },
     website: {
