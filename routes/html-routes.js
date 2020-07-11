@@ -25,28 +25,32 @@ module.exports = function(app) {
   // Here we've added our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, (req, res) => {
-    // db.Post.findAll({}).then(data => {
-    //   console.log(data.Post);
-    //   res.json(data.Post);
-    // });
     res.render("members");
   });
-
-  // member feed blog posts (public facing)
-  app.get("/member-feed", (req, res) => {
-    console.log("success");
-    db.Post.findAll({}).then(data => {
-      console.log(data, "39");
-      const x = data.map(packet => packet.dataValues.body);
-      console.log(x, "41");
-      obj = [];
-      for (message of x) {
-        obj.push({ body: message });
-      }
-      console.log(obj, "46");
-      res.render("member-feed", { Post: obj });
-    });
+  // route loads members feed page
+  app.get("/member-feed", isAuthenticated, (req, res) => {
+    res.render("member-feed");
   });
+
+  // app.get("/cms", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/cms.html"));
+  // });
+
+  // // member feed blog posts (public facing)
+  // app.get("/member-feed", (req, res) => {
+  //   console.log("success");
+  //   db.Post.findAll({}).then(data => {
+  //     console.log(data, "39");
+  //     const x = data.map(packet => packet.dataValues.body);
+  //     console.log(x, "41");
+  //     obj = [];
+  //     for (message of x) {
+  //       obj.push({ body: message });
+  //     }
+  //     console.log(obj, "46");
+  //     res.render("member-feed", { Post: obj });
+  //   });
+  // });
   
   // brewer page
   app.get("/brewer-page", isAuthenticated, (req, res) => {
@@ -57,11 +61,4 @@ module.exports = function(app) {
   app.get("/brewer-feed", isAuthenticated, (req, res) => {
     res.render("brewer-feed");
   });
-
-  // app.get("/api/members", (req, res) => {
-  //   db.Post.findAll({}).then(data => {
-  //     console.log(data.Post);
-  //     res.json(data.Post);
-  //   });
-  // });
 };
