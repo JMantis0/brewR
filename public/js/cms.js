@@ -79,15 +79,4 @@ $(document).ready(() => {
       window.location.href = "/member-feed";
     });
   }
-
-    // // Update a given post, bring user to the members feed page when done
-    // function updatePost(post) {
-    //   $.ajax({
-    //     method: "PUT",
-    //     url: "/api/posts",
-    //     data: post
-    //   }).then(() => {
-    //     window.location.href = "/member-feed";
-    //   });
-    // }
 });
