@@ -37,7 +37,7 @@ $(document).ready(() => {
   //  State of the searchinput and type selector.
   $('#searchBtn').click(function (event) {
     event.preventDefault();
-    console.log("click")
+  
     let searchBy = $('#searchType')[0].options[$('#searchType')[0].selectedIndex].value;
     let parameter;
     switch (searchBy) {
@@ -52,13 +52,11 @@ $(document).ready(() => {
       case "5":
         parameter = $('#typeInput').val();
     }
-    console.log(searchBy, parameter)
     $.get(`/api/search/${searchBy}/${parameter}`)
     //  get brewery search results back from the server side and render!!
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       breweries.forEach((brewery) => {
-        console.log(brewery.name, brewery);
         $("#breweryContainer").append(
         `<div class="card" style="width: 18rem;">
           <div class="card-body">
