@@ -172,7 +172,7 @@ module.exports = function(app) {
 
   // DELETE route for deleting posts
   app.delete("/api/taplist/:id", (req, res) => {
-    db.Post.destroy({
+    db.Brewerybeer.destroy({
       where: {
         id: req.params.id
       }
