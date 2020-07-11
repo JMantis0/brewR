@@ -31,3 +31,27 @@ h2 {
 .signUpUserType {
   margin-top: 30px;
 }
+
+#brewr-brand {
+  font-family: 'Bevan', cursive;
+  font-size: 24pt;
+}
+
+.card {
+  margin: 5pt;
+}
+
+.card-header {
+  padding: 0;
+}
+
+.delete {
+  float: right;
+  padding: 1 px;
+}
+
+#breweryContainer {
+  float: left;
+  margin-left: 70px;
+  margin-top: 30px;
+}
