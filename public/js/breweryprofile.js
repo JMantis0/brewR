@@ -2,6 +2,7 @@
 $(document).ready(() => {
   let taplist;
 
+  $(document).on("click", "button.delete", handleTaplistDelete);
   // Submits a new beer to On Tap List and brings user to brewer-page page upon completion
   function submitTaplist(Brewerybeer) {
     $.post("/api/taplist/", Brewerybeer, () => {
@@ -34,7 +35,7 @@ $(document).ready(() => {
     });
   }
 
-  // This function grabs posts from the database and updates the view
+  // This function grabs Brewerybeers from the database and updates the view
   function getTaplist(category) {
     let categoryString = category || "";
     if (categoryString) {
@@ -43,7 +44,7 @@ $(document).ready(() => {
     $.get("/api/taplist" + categoryString, data => {
       taplist = data;
       for (let i = 0; i < data.length; i++) {
-        const tapListItem = $("<h1>");
+        const tapListItem = $("<li>");
         tapListItem.text(
           data[i].beername +
             " " +
@@ -53,9 +54,37 @@ $(document).ready(() => {
             " " +
             data[i].beerhops
         );
-        $("#onTap").append(tapListItem);
+        tapListItem.attr("id", "list-item-" + data[i].id);
+
+        const deleteOntap = $("<button>");
+        deleteOntap.text("x");
+        deleteOntap.addClass("delete btn btn-danger");
+        deleteOntap.attr("id", "delete-" + data[i].id);
+        $("#ontapProfile").append(tapListItem);
+        $("#list-item-" + data[i].id).append(deleteOntap);
+        deleteOntap.data("data", data[i]);
+        console.log(deleteOntap);
       }
     });
   }
   getTaplist();
+
+  // This function does an API call to delete posts
+  function deleteTaplist(id) {
+    $.ajax({
+      method: "DELETE",
+      url: "/api/taplist/" + id
+    }).then(() => {
+      // getTaplist(postCategorySelect.val());
+      location.reload;
+    });
+  }
+
+  // This function figures out which Brewerybeer we want to delete and then calls
+  // deleteTaplist
+  function handleTaplistDelete() {
+    const currentBrewerybeer = $(this).data("data");
+    deleteTaplist(currentBrewerybeer);
+    console.log(currentBrewerybeer);
+  }
 });
