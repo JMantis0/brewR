@@ -1,5 +1,4 @@
 // Requiring our models and passport as we've configured it
-require("dotenv").config();
 const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
@@ -10,7 +9,6 @@ module.exports = function(app) {
   // Otherwise the user will be sent an error
   app.post("/api/login", passport.authenticate("local"), (req, res) => {
     // Sending back a password, even a hashed password, isn't a good idea
-    console.log(req);
     res.json({
       email: req.user.email,
       id: req.user.id,
@@ -35,6 +33,7 @@ module.exports = function(app) {
       });
   });
 
+  // Routes for page redirection
   // Route for logging user out
   app.get("/logout", (req, res) => {
     req.logout();
@@ -86,6 +85,7 @@ module.exports = function(app) {
       4: "?by_state",
       5: "?by_type"
     };
+
     //  Call Open Brewery API within axios.get
     axios
       .get(
@@ -103,24 +103,6 @@ module.exports = function(app) {
       });
   });
 
-  // // blog posts crud starts here
-  // // GET route for getting all of the posts
-  // app.get("/api/posts/", (req, res) => {
-  //   db.Post.findAll({}).then(data => {
-  //     res.json(data);
-  //   });
-  // });
-
-  // // Get route for returning posts of a specific category
-  // app.get("/api/posts/category/:category", (req, res) => {
-  //   db.Post.findAll({
-  //     where: {
-  //       category: req.params.category
-  //     }
-  //   }).then(data => {
-  //     res.json(data);
-  //   });
-  // });
   // blog posts crud starts here
   // GET route for getting all of the posts
   app.get("/api/posts/", (req, res) => {
@@ -166,7 +148,6 @@ module.exports = function(app) {
   //Brewery routes
   // POST route for saving a new post
   app.post("/api/taplist", (req, res) => {
-    console.log(req.body);
     db.Brewerybeer.create({
       beername: req.body.beername,
       beerstyle: req.body.beerstyle,
@@ -174,6 +155,24 @@ module.exports = function(app) {
       beerhops: req.body.beerhops
     }).then(data => {
       res.json(data);
+    });
+  });
+
+  // GET route for getting all of the posts
+  app.get("/api/taplist/", (req, res) => {
+    db.Brewerybeer.findAll({}).then(data => {
+      res.json(data);
+    });
+  });
+
+  // DELETE route for deleting posts
+  app.delete("/api/taplist/:id", (req, res) => {
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(data => {
+      res.json(data).end();
     });
   });
 };
