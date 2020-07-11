@@ -37,7 +37,7 @@ $(document).ready(() => {
   //  State of the searchinput and type selector.
   $('#searchBtn').click(function (event) {
     event.preventDefault();
-    console.log("click")
+  
     let searchBy = $('#searchType')[0].options[$('#searchType')[0].selectedIndex].value;
     let parameter;
     switch (searchBy) {
@@ -52,26 +52,44 @@ $(document).ready(() => {
       case "5":
         parameter = $('#typeInput').val();
     }
-    console.log(searchBy, parameter)
     $.get(`/api/search/${searchBy}/${parameter}`)
     //  get brewery search results back from the server side and render!!
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       breweries.forEach((brewery) => {
-        console.log(brewery.name, brewery);
         $("#breweryContainer").append(
-        `<div class="card" style="width: 18rem;">
-          <div class="card-body">
-            <div class="input-group-text">
-              <input type="checkbox" aria-label="Checkbox for following text input">
+          `<div class="card" id="${brewery.id}" style="width: 18rem;">
+            <div class="card-body">
+              <div class="input-group-text">
+                <input type="checkbox" aria-label="Checkbox for following text input">
+              </div>
+              <h5 class="card-title">${brewery.name}</h5>
+              <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
+              <p class="card-text">${brewery.city}, ${brewery.state}</p>
+              <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
+              <div class="buttonContainer">
+                <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Button</button>
+              </div>
             </div>
-            <h5 class="card-title">${brewery.name}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
-            <p class="card-text">${brewery.city}, ${brewery.state}</p>
-            <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
-          </div>
-        </div>`);
+          </div>`);
+
+          //Now add listeners to the buttons on each card
+        $(`#faveAddButton${brewery.id}`).on("click", function(event) {
+          $.post("/api/favorite", brewery).then(data => {
+            console.log(data, "79** search.js what is this data?")
+          }); 
+        });
+
       });
+
+
+     
+
     });
+
+
+
+
+
   });
 });
