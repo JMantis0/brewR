@@ -58,9 +58,6 @@ $(document).ready(() => {
     const deleteBtn = $("<button>");
     deleteBtn.text("x");
     deleteBtn.addClass("delete btn btn-danger");
-    // const editBtn = $("<button>");
-    // editBtn.text("EDIT");
-    // editBtn.addClass("edit btn btn-default");
     const newPostTitle = $("<h2>");
     const newPostDate = $("<small>");
     const newPostCategory = $("<h5>");
@@ -73,14 +70,10 @@ $(document).ready(() => {
     const newPostCardBody = $("<div>");
     newPostCardBody.addClass("card-body");
     const newPostBody = $("<p>");
-    // newPostTitle.text(post.title + " ");
     newPostBody.text(post.body);
     let formattedDate = new Date(post.createdAt);
-    // formattedDate = moment(formattedDate).format("MMMM Do YYYY, h:mm:ss a");
     newPostDate.text(formattedDate);
-    // newPostTitle.append(newPostDate);
     newPostCardHeading.append(deleteBtn);
-    // newPostCardHeading.append(editBtn);
     newPostCardHeading.append(newPostTitle);
     newPostCardHeading.append(newPostCategory);
     newPostCardBody.append(newPostBody);
@@ -124,7 +117,7 @@ $(document).ready(() => {
     blogContainer.append(messageH2);
   }
 
-  // This function handles reloading new posts when the category changes
+//   This function handles reloading new posts when the category changes
   function handleCategoryChange() {
     const newPostCategory = $(this).val();
     getPosts(newPostCategory);

@@ -27,24 +27,17 @@
 </nav>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2> <span class="member-name"></span></h2>
+  <div class="col-md-5 offset-md-3">
+    <br>
+  </div>
+<div class='container' id='breweryContainer'>
+  <div class="col-md-5 offset-md-3">
+    <br>
+        <div class="row">
+      <div class="col-md-12 blog-container">
+      </div>
     </div>
   </div>
-  <div class="row">
-
-    {{#each Post}}
-    <li>{{body}}
-    </li>
-    {{/each}}
-      {{name}}
-    
-      <button class="change-drink" data-id="{{id}}" data-newbrewery="{{brewery}}">
-        {{brewery_name}} {{#if brewery}} - Add to List {{/if}}
-      </button>
-
-      <button class="delete-brewery" data-id="{{this.id}}">DELETE</button>
-    </li>
-  </div>
 </div>
+  <script src="/js/feed.js" type="text/javascript"></script>
+   <script src="/js/cms.js" type="text/javascript"></script>
