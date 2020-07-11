@@ -88,13 +88,13 @@ $(document).ready(() => {
 
   // This function figures out which post we want to edit and takes it to the
   // Appropriate url
-  function handlePostEdit() {
-    const currentPost = $(this)
-      .parent()
-      .parent()
-      .data("post");
-    window.location.href = "/members?post_id=" + currentPost.id;
-  }
+  // function handlePostEdit() {
+  //   const currentPost = $(this)
+  //     .parent()
+  //     .parent()
+  //     .data("post");
+  //   window.location.href = "/members?post_id=" + currentPost.id;
+  // }
 
   // This function displays a message when there are no posts
   function displayEmpty() {
@@ -111,8 +111,8 @@ $(document).ready(() => {
   }
 
 //   This function handles reloading new posts when the category changes
-  function handleCategoryChange() {
-    const newPostCategory = $(this).val();
-    getPosts(newPostCategory);
-  }
+  // function handleCategoryChange() {
+  //   const newPostCategory = $(this).val();
+  //   getPosts(newPostCategory);
+  // }
 });
