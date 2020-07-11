@@ -60,7 +60,7 @@ $(document).ready(() => {
         // If this post exists, prefill our cms forms with its data
         titleInput.val(data.title);
         bodyInput.val(data.body);
-        postCategorySelect.val(data.category);
+        // postCategorySelect.val(data.category);
         // If we have a post with this id, set a flag for us to know to update the post
         // when we hit submit
         updating = true;
@@ -76,6 +76,18 @@ $(document).ready(() => {
       data: post
     }).then(() => {
       window.location.href = "/members";
+      window.location.href = "/member-feed";
     });
   }
+
+    // // Update a given post, bring user to the members feed page when done
+    // function updatePost(post) {
+    //   $.ajax({
+    //     method: "PUT",
+    //     url: "/api/posts",
+    //     data: post
+    //   }).then(() => {
+    //     window.location.href = "/member-feed";
+    //   });
+    // }
 });

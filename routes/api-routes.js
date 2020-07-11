@@ -102,26 +102,6 @@ module.exports = function(app) {
         console.log(error);
       });
   });
-
-  // // blog posts crud starts here
-  // // GET route for getting all of the posts
-  // app.get("/api/posts/", (req, res) => {
-  //   db.Post.findAll({}).then(data => {
-  //     res.json(data);
-  //   });
-  // });
-
-  // // Get route for returning posts of a specific category
-  // app.get("/api/posts/category/:category", (req, res) => {
-  //   db.Post.findAll({
-  //     where: {
-  //       category: req.params.category
-  //     }
-  //   }).then(data => {
-  //     res.json(data);
-  //   });
-  // });
-
   
   // blog posts crud starts here
   // GET route for getting all of the posts
