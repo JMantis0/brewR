@@ -25,7 +25,8 @@ $(document).ready(() => {
       method: "DELETE",
       url: "/api/posts/" + id
     }).then(() => {
-      getPosts(postCategorySelect.val());
+      // getPosts(postCategorySelect.val());
+      location.reload();
     });
   }
 
