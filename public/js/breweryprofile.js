@@ -1,14 +1,6 @@
-// Functionality for brewery-page
+// Functionality for brewer-page
 $(document).ready(() => {
   let taplist;
-
-  $(document).on("click", "button.delete", handleTaplistDelete);
-  // Submits a new beer to On Tap List and brings user to brewer-page page upon completion
-  function submitTaplist(Brewerybeer) {
-    $.post("/api/taplist/", Brewerybeer, () => {
-      window.location.href = "/brewer-page";
-    });
-  }
 
   $("#beerTypeButton").on("click", event => {
     event.preventDefault();
@@ -24,7 +16,6 @@ $(document).ready(() => {
       beerabv: abv.val().trim(),
       beerhops: hops.val().trim()
     };
-
     submitTaplist(beerValue);
   });
 
@@ -44,30 +35,27 @@ $(document).ready(() => {
     $.get("/api/taplist" + categoryString, data => {
       taplist = data;
       for (let i = 0; i < data.length; i++) {
-        const tapListItem = $("<li>");
-        tapListItem.text(
-          data[i].beername +
-            " " +
-            data[i].beerstyle +
-            " " +
-            data[i].beerabv +
-            " " +
-            data[i].beerhops
-        );
-        tapListItem.attr("id", "list-item-" + data[i].id);
-
+        const tapListItem = $("<h5>");
         const deleteOntap = $("<button>");
+        const addBreak = $("<br>")
+
+        tapListItem.text(data[i].beername);
+        tapListItem.attr("id", "list-item-" + data[i].id);
+        tapListItem.addClass("listItem")
+
         deleteOntap.text("x");
         deleteOntap.addClass("delete btn btn-danger");
-        deleteOntap.attr("id", "delete-" + data[i].id);
+
         $("#ontapProfile").append(tapListItem);
         $("#list-item-" + data[i].id).append(deleteOntap);
+        $(".listItem").append(addBreak)
         deleteOntap.data("data", data[i]);
-        console.log(deleteOntap);
       }
     });
   }
   getTaplist();
+
+  $(document).on("click", "button.delete", handleTaplistDelete);
 
   // This function does an API call to delete posts
   function deleteTaplist(id) {
@@ -75,8 +63,7 @@ $(document).ready(() => {
       method: "DELETE",
       url: "/api/taplist/" + id
     }).then(() => {
-      // getTaplist(postCategorySelect.val());
-      location.reload;
+      location.reload();
     });
   }
 
@@ -84,7 +71,6 @@ $(document).ready(() => {
   // deleteTaplist
   function handleTaplistDelete() {
     const currentBrewerybeer = $(this).data("data");
-    deleteTaplist(currentBrewerybeer);
-    console.log(currentBrewerybeer);
+    deleteTaplist(currentBrewerybeer.id);
   }
 });

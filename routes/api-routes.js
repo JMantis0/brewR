@@ -177,7 +177,8 @@ module.exports = function(app) {
       beername: req.body.beername,
       beerstyle: req.body.beerstyle,
       beerabv: req.body.beerabv,
-      beerhops: req.body.beerhops
+      beerhops: req.body.beerhops,
+      UserId: req.body.id
     }).then(data => {
       res.json(data);
     });
