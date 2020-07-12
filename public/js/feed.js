@@ -20,13 +20,15 @@ $(document).ready(() => {
   }
 
   // This function does an API call to delete posts
-  function deletePost(id) {
+  function deletePost(postCardElement, id) {
     $.ajax({
       method: "DELETE",
       url: "/api/posts/" + id
     }).then(() => {
-      // getPosts(postCategorySelect.val());
-      location.reload();
+      
+      //  Removes the element containing the post (card element)
+      postCardElement.remove();
+
     });
   }
 
@@ -84,7 +86,8 @@ $(document).ready(() => {
       .parent()
       .parent()
       .data("post");
-    deletePost(currentPost.id);
+      cardElement = $(this).parent().parent();
+    deletePost(cardElement, currentPost.id);
   }
 
   // This function figures out which post we want to edit and takes it to the

@@ -56,40 +56,44 @@ $(document).ready(() => {
     //  get brewery search results back from the server side and render!!
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
+      $("#breweryContainer").empty();
       breweries.forEach((brewery) => {
         $("#breweryContainer").append(
-          `<div class="card" id="${brewery.id}" style="width: 18rem;">
+          `<div class="card" id="${brewery.id}" style="width: 100%;">
             <div class="card-body">
-              <div class="input-group-text">
-                <input type="checkbox" aria-label="Checkbox for following text input">
-              </div>
               <h5 class="card-title">${brewery.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
               <p class="card-text">${brewery.city}, ${brewery.state}</p>
               <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
               <div class="buttonContainer">
-                <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Button</button>
+                <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Add</button>
               </div>
             </div>
           </div>`);
 
           //Now add listeners to the buttons on each card
         $(`#faveAddButton${brewery.id}`).on("click", function(event) {
-          $.post("/api/favorite", brewery).then(data => {
-            console.log(data, "79** search.js what is this data?")
-          }); 
+          //  Add Code here that prevents the data from being duplicated and entered into the
+          //  Favorites table as a record more than once.
+          $.post("/api/favorite", brewery);
+          //  Check to see if the div has already been rendered to the favorites list.  Only render
+          //  the new favorite if it has not already been rendered.  It Works!!
+          if(!$(`#fave${brewery.id}`)[0]) {
+            $("#favoriteColumn").append(
+              `<div class="card" id="fave${brewery.id}" style="width: 100%;">
+                <div class="card-body">
+                  <h5 class="card-title">${brewery.name}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
+                  <p class="card-text">${brewery.city}, ${brewery.state}</p>
+                  <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
+                  <div class="buttonContainer">
+                    <button class="btn btn-primary" id="faveRemoveButton${brewery.id}" type="submit">Remove</button>
+                  </div>
+                </div>
+              </div>`);     
+          }
         });
-
       });
-
-
-     
-
     });
-
-
-
-
-
   });
 });
