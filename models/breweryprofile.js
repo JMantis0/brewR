@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   const Brewerybeer = sequelize.define("Brewerybeer", {
     beername: {
       type: DataTypes.STRING,
@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     beerabv: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.DECIMAL,
       allowNull: false,
       validate: {
         len: [1]
@@ -29,6 +29,14 @@ module.exports = function (sequelize, DataTypes) {
       }
     }
   });
+
+  Brewerybeer.associate = function(models) {
+    Brewerybeer.belongsTo(models.User, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
   return Brewerybeer;
 };
 
