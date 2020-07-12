@@ -171,27 +171,31 @@ module.exports = function(app) {
   });
 
   //Brewery routes
-  // POST route for saving a new post
+  // GET route for retrieiving On Tap List for specific user
+  app.get("/api/taplist/", (req, res) => {
+    db.Brewerybeer.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // POST route for saving a beer to On Tap List
   app.post("/api/taplist", (req, res) => {
     db.Brewerybeer.create({
       beername: req.body.beername,
       beerstyle: req.body.beerstyle,
       beerabv: req.body.beerabv,
       beerhops: req.body.beerhops,
-      UserId: req.body.id
+      UserId: req.user.id
     }).then(data => {
       res.json(data);
     });
   });
 
-  // GET route for getting all of the posts
-  app.get("/api/taplist/", (req, res) => {
-    db.Brewerybeer.findAll({}).then(data => {
-      res.json(data);
-    });
-  });
-
-  // DELETE route for deleting posts
+  // DELETE route for deleting beer off of On Tap List
   app.delete("/api/taplist/:id", (req, res) => {
     db.Brewerybeer.destroy({
       where: {
@@ -199,6 +203,34 @@ module.exports = function(app) {
       }
     }).then(data => {
       res.json(data).end();
+    });
+  });
+
+  // Hours of Operation routes
+  // GET route for retrieving hours for specific user
+  app.get("/api/hours/", (req, res) => {
+    db.Breweryhour.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // POST route for saving a beer to On Tap List
+  app.post("/api/hours", (req, res) => {
+    db.Breweryhour.create({
+      monday: req.body.monday,
+      tuesday: req.body.tuesday,
+      wednesday: req.body.wednesday,
+      thursday: req.body.thursday,
+      friday: req.body.friday,
+      saturday: req.body.saturday,
+      sunday: req.body.sunday,
+      UserId: req.user.id
+    }).then(data => {
+      res.json(data);
     });
   });
 };
