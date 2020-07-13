@@ -88,4 +88,17 @@ $(document).ready(() => {
       .parent();
     deletePost(cardElement, currentPost.id);
   }
+  // This function displays a message when there are no posts
+  function displayEmpty() {
+    blogContainer.empty();
+    const messageH2 = $("<h2>");
+    messageH2.css({
+      "text-align": "center",
+      "margin-top": "50px"
+    });
+    messageH2.html(
+      "What would you like to share?"
+    );
+    blogContainer.append(messageH2);
+  }
 });
