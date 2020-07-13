@@ -24,7 +24,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     dogs: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1]
       }
