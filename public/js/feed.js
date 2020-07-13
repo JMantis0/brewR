@@ -108,7 +108,7 @@ $(document).ready(() => {
       "margin-top": "50px"
     });
     messageH2.html(
-      "No posts yet for this category, navigate <a href='/cms'>here</a> in order to create a new post."
+      "What would you like to share?"
     );
     blogContainer.append(messageH2);
   }
