@@ -1,5 +1,4 @@
 $(document).ready(() => {
-
   // Starter code
   $.get("/api/user_data").then(data => {
     $(".member-name").text(data.email);
@@ -8,7 +7,7 @@ $(document).ready(() => {
   //  Load the current user's favorites to the favoriteColumn
   $.get("/api/members/loadFavorites").then(favorites => {
     // post favorites to the favorites column
-    favorites.forEach(function(favorite) {
+    favorites.forEach(favorite => {
       $("#favoriteColumn").append(
         `<div class="card" id="fave${favorite.id}" style="width: 100%;">
           <div class="card-body">
@@ -20,15 +19,16 @@ $(document).ready(() => {
               <button class="btn btn-primary" id="faveRemoveButton${favorite.id}" type="submit">Remove from Favorites</button>
             </div>
           </div>
-        </div>`);
-        $(`#faveRemoveButton${favorite.id}`).click(function() {
-          $.ajax({
-            method: "DELETE",
-            url: `/api/members/favoriteDelete/${favorite.brewer_id}`
-          }).then(() => {
-            $(`#fave${favorite.id}`).remove();
-          });
+        </div>`
+      );
+      $(`#faveRemoveButton${favorite.id}`).click(() => {
+        $.ajax({
+          method: "DELETE",
+          url: `/api/members/favoriteDelete/${favorite.brewer_id}`
+        }).then(() => {
+          $(`#fave${favorite.id}`).remove();
         });
+      });
     });
   });
 });

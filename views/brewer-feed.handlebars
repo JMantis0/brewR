@@ -7,13 +7,12 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">Options</a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" href="/homebrewery">Home</a>
-          <a class="dropdown-item" href="/support">Support</a>
+          <a class="dropdown-item" href="/brewerysupport">Support</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="/logout">Logout</a>
         </div>
@@ -28,7 +27,7 @@
   </div>
   <div class="row">
     <div class="col-5">
-      <div class="col-6 alert alert-dark mt-3" role="alert">
+      <div class="col-10 alert alert-light mt-3" role="alert">
         <div class="row">
           <div class="col-12" id="breweryAddress"></div>
         </div>
@@ -36,12 +35,11 @@
           <div class="col-12" id="breweryPhone"></div>
         </div>
         <div class="row">
-          <h7 class="col-6">Dogs: </h7>
-          <div class="col-6" id="breweryDogs"></div>
+          <div class="col-12" id="breweryDogs"></div>
         </div>
       </div>
     </div>
-    <div class="col-7 alert alert-dark mt-2" role="alert">
+    <div class="col-7 alert alert-light mt-2" role="alert">
       <div class="row">
         <h2>On Tap</h2>
       </div>
@@ -55,38 +53,36 @@
       </div>
     </div>
   </div>
-    <div class="col-4 alert alert-dark mt-1" role="alert">
-      <div class="row">
-        <h7 class="col-6">Monday: </h7>
-        <div id="mondayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Tuesday: </h7>
-        <div id="tuesdayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Wednesday: </h7>
-        <div id="wednesdayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Thursday: </h7>
-        <div id="thursdayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Friday: </h7>
-        <div id="fridayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Saturday: </h7>
-        <div id="saturdayFeed"></div>
-      </div>
-      <div class="row">
-        <h7 class="col-6">Sunday: </h7>
-        <div id="sundayFeed"></div>
-      </div>
+  <div class="col-4 alert alert-light mt-1" role="alert">
+    <div class="row">
+      <h7 class="col-6">Monday: </h7>
+      <div id="mondayFeed"></div>
     </div>
-
-
-
+    <div class="row">
+      <h7 class="col-6">Tuesday: </h7>
+      <div id="tuesdayFeed"></div>
+    </div>
+    <div class="row">
+      <h7 class="col-6">Wednesday: </h7>
+      <div id="wednesdayFeed"></div>
+    </div>
+    <div class="row">
+      <h7 class="col-6">Thursday: </h7>
+      <div id="thursdayFeed"></div>
+    </div>
+    <div class="row">
+      <h7 class="col-6">Friday: </h7>
+      <div id="fridayFeed"></div>
+    </div>
+    <div class="row">
+      <h7 class="col-6">Saturday: </h7>
+      <div id="saturdayFeed"></div>
+    </div>
+    <div class="row">
+      <h7 class="col-6">Sunday: </h7>
+      <div id="sundayFeed"></div>
+    </div>
+  </div>
 </div>
+
 <script src="/js/breweryfeed.js"></script>
