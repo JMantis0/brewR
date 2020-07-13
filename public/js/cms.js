@@ -4,10 +4,9 @@ $(document).ready(() => {
   const url = window.location.search;
   let postId;
   // Sets a flag for whether or not we're updating a post to be false initially
-  let updating = false;
+  // let updating = false;
 
   // If we have this section in our url, we pull out the post id from the url
-  // In localhost:8080/cms?post_id=1, postId is 1
   if (url.indexOf("?post_id=") !== -1) {
     postId = url.split("=")[1];
     getPostData(postId);
@@ -16,11 +15,9 @@ $(document).ready(() => {
   // Getting jQuery references to the post body
   const bodyInput = $("#body");
   const cmsForm = $("#cms");
-
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", event => {
     event.preventDefault();
-
     // Wont submit the post if we are missing a body
     if (!bodyInput.val().trim()) {
       return;
@@ -88,4 +85,8 @@ $(document).ready(() => {
       }
     });
   }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 });
