@@ -1,5 +1,27 @@
 // this is where the blog post js starts
 $(document).ready(() => {
+
+  //  LOAD THE USER'S FAVORITES UP
+  $.get("/api/members/loadFavorites").then(favorites => {
+    // post favorites to the favorites column
+    favorites.forEach(function(favorite) {
+      $("#breweryContainer").append(
+        `<div class="card" id="fave${favorite.id}" style="width: 100%;">
+          <div class="card-body">
+            <h5 class="card-title">${favorite.name}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Type: ${favorite.brewery_type}</h6>
+            <p class="card-text">${favorite.city}, ${favorite.state}</p>
+            <a href="${favorite.website_url}" class="card-link">${favorite.name} Home Page</a>
+          </div>
+        </div>`);
+    });
+  });
+
+
+
+
+
+
 // THIS IS WHERE THE MEMBERS BLOG CMS CODE STARTS
 const url = window.location.search;
   let postId;
