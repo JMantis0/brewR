@@ -57,7 +57,7 @@ $(document).ready(() => {
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       $("#breweryContainer").empty();
-      $("#breweryContainer").append(`<h1>Search Results:</h1>`);
+      $("#breweryContainer").append(`<h1 id="search-results">Search Results:</h1>`);
       breweries.forEach((brewery) => {
         $("#breweryContainer").append(
           `
@@ -68,7 +68,7 @@ $(document).ready(() => {
               <p class="card-text">${brewery.city}, ${brewery.state}</p>
               <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
               <div class="buttonContainer">
-                <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Add</button>
+                <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Add to Favorites</button>
               </div>
             </div>
           </div>
@@ -78,11 +78,11 @@ $(document).ready(() => {
         $(`#faveAddButton${brewery.id}`).on("click", function(event) {
           //  Add Code here that prevents the data from being duplicated and entered into the
           //  Favorites table as a record more than once.
-          $.post("/api/favorite", brewery);
+          $.post("/api/members/favoriteAdd", brewery);
           //  Check to see if the div has already been rendered to the favorites list.  Only render
           //  the new favorite if it has not already been rendered.  It Works!!
           if(!$(`#fave${brewery.id}`)[0]) {
-            $("#favoriteColumn").append(
+            $("#favoriteColumn").prepend(
               `<div class="card" id="fave${brewery.id}" style="width: 100%;">
                 <div class="card-body">
                   <h5 class="card-title">${brewery.name}</h5>
@@ -90,10 +90,20 @@ $(document).ready(() => {
                   <p class="card-text">${brewery.city}, ${brewery.state}</p>
                   <a href="${brewery.website_url}" class="card-link">${brewery.name} Home Page</a>
                   <div class="buttonContainer">
-                    <button class="btn btn-primary" id="faveRemoveButton${brewery.id}" type="submit">Remove</button>
+                    <button class="btn btn-primary" id="faveRemoveButton${brewery.id}" type="submit">Remove from Favorites</button>
                   </div>
                 </div>
-              </div>`);     
+              </div>`);
+
+            //  Add event listener to the delete button on cards that are created by the click on faveAddButtons
+            $(`#faveRemoveButton${brewery.id}`).click(function(event) {
+              $.ajax({
+                method: "DELETE",
+                url: `/api/members/favoriteDelete/${brewery.id}`
+              }).then(() => {
+                $(`#fave${brewery.id}`).remove()
+              });
+            });
           }
         });
       });

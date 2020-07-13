@@ -13,38 +13,41 @@ $(document).ready(() => {
     getPostData(postId);
   }
 
-  // Getting jQuery references to the post body, title, form, and category select
+  // Getting jQuery references to the post body
   const bodyInput = $("#body");
   //   const titleInput = $("#title");
   const cmsForm = $("#cms");
-  const postCategorySelect = $("#category");
+  // const postCategorySelect = $("#category");
   // Giving the postCategorySelect a default value
-  postCategorySelect.val("Personal");
+  // postCategorySelect.val("Personal");
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", event => {
     event.preventDefault();
-    // Wont submit the post if we are missing a body or a title
+    
+    // Wont submit the post if we are missing a body 
     if (!bodyInput.val().trim()) {
       return;
     }
     // Constructing a newPost object to hand to the database
     const newPost = {
-      //   title: titleInput.val().trim(),
       body: bodyInput.val().trim()
-      //   category: postCategorySelect.val()
     };
 
     console.log(newPost);
 
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
-    if (updating) {
-      newPost.id = postId;
-      updatePost(newPost);
-    } else {
-      submitPost(newPost);
-    }
+    // if (updating) {
+    //   newPost.id = postId;
+    //   updatePost(newPost);
+    // } else {
+    // }
+    submitPost(newPost);
   });
+
+  function clear(){ 
+    document.getElementById('body').value='';
+    } 
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(Post) {
@@ -87,6 +90,8 @@ $(document).ready(() => {
     newPostCard.data("post", newPost);
     $(".blog-container").prepend(newPostCard);
     });
+
+    clear();
   }
 
   // Gets post data for a post if we're editing
@@ -105,14 +110,14 @@ $(document).ready(() => {
   }
 
   // Update a given post, bring user to the blog page when done
-  function updatePost(post) {
-    $.ajax({
-      method: "PUT",
-      url: "/api/posts",
-      data: post
-    }).then(() => {
-      window.location.href = "/members";
-      window.location.href = "/member-feed";
-    });
-  }
+  // function updatePost(post) {
+  //   $.ajax({
+  //     method: "PUT",
+  //     url: "/api/posts",
+  //     data: post
+  //   }).then(() => {
+  //     window.location.href = "/members";
+  //     window.location.href = "/member-feed";
+  //   });
+  // }
 });
