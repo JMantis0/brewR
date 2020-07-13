@@ -1,125 +1,125 @@
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" id="brewr-brand">brewR</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" id="brewr-brand">brewR</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">Options</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/profilebrewery">View Profile</a>
-            <a class="dropdown-item" href="/support">Support</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/logout">Logout</a>
-          </div>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search-button">Search</button>
-      </form>
-    </div>
-  </nav>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">Options</a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/profilebrewery">View Profile</a>
+          <a class="dropdown-item" href="/support">Support</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/logout">Logout</a>
+        </div>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search-button">Search</button>
+    </form>
+  </div>
+</nav>
 
-  <div class="row my-5 mx-2">
-    <div class="col-3">
-      <div class="alert alert-dark" role="alert">
-        <h5>Add Beer to Profile</h5>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Beer Name</label>
-          <input class="form-control" id="beer-name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Style</label>
-          <input class="form-control" id="style">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">ABV%</label>
-          <input class="form-control" id="abv">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Hops</label>
-          <input class="form-control" id="hops">
-        </div>
-        <button type="submit" class="btn btn-outline-dark" id="beerTypeButton">Submit</button>
+<div class="row my-5 mx-2">
+  <div class="col-3">
+    <div class="alert alert-dark" role="alert">
+      <h5>Add Beer to Profile</h5>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Beer Name</label>
+        <input class="form-control" id="beer-name">
       </div>
-    </div>
-    <div class="col-3">
-      <div class="alert alert-dark" role="alert">
-        <h5 >Current Beer List</h5>
-        <div id="ontapProfile">
-        </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Style</label>
+        <input class="form-control" id="style">
       </div>
-    </div>
-    <div class="col-3">
-      <div class="alert alert-dark" role="alert">
-        <h5>Your Brewery Information</h5>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Brewery Name</label>
-          <input class="form-control" id="brewery-name">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Address</label>
-          <input class="form-control" id="address">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Phone Number</label>
-          <input class="form-control" id="phone-number">
-        </div>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Dog Friendly</label>
-          <input class="form-control" id="dogs-allowed">
-        </div>
-        <button type="submit" class="btn btn-outline-dark">Submit</button>
+      <div class="form-group">
+        <label for="exampleInputEmail1">ABV%</label>
+        <input class="form-control" id="abv">
       </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Hops</label>
+        <input class="form-control" id="hops">
+      </div>
+      <button type="submit" class="btn btn-outline-dark" id="beerTypeButton">Submit</button>
     </div>
-    <div class="col-3">
-      <div class="alert alert-dark" role="alert">
-        <h5>Hours of Operation</h5>
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Monday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openM">
-          </div>
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Tuesday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openT">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Wednesday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openW">
-          </div>
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Thursday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openTh">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Friday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openF">
-          </div>
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Saturday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openS">
-          </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-6">
-            <label for="exampleInputEmail1">Sunday</label>
-            <input class="form-control" placeholder="9am-7pm" id="openSu">
-          </div>
-        </div>
-        <button type="submit" class="btn btn-outline-dark" id="breweryHoursButton">Submit</button>
+  </div>
+  <div class="col-3">
+    <div class="alert alert-dark" role="alert">
+      <h5>Current Beer List</h5>
+      <div id="ontapProfile">
       </div>
     </div>
   </div>
-  <script src="/js/breweryprofile.js"></script>
-  <script src="/js/breweryfeed.js"></script>
+  <div class="col-3">
+    <div class="alert alert-dark" role="alert">
+      <h5>Your Brewery Information</h5>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Brewery Name</label>
+        <input class="form-control" id="brewery-name">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Address</label>
+        <input class="form-control" id="address">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Phone Number</label>
+        <input class="form-control" id="phone-number">
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Dog Friendly</label>
+        <input class="form-control" id="dogs-allowed">
+      </div>
+      <button type="submit" class="btn btn-outline-dark">Submit</button>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="alert alert-dark" role="alert">
+      <h5>Hours of Operation</h5>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Monday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openM">
+        </div>
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Tuesday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openT">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Wednesday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openW">
+        </div>
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Thursday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openTh">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Friday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openF">
+        </div>
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Saturday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openS">
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-6">
+          <label for="exampleInputEmail1">Sunday</label>
+          <input class="form-control" placeholder="9am-7pm" id="openSu">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-outline-dark" id="breweryHoursButton">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/breweryprofile.js"></script>

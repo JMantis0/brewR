@@ -25,14 +25,14 @@ $(document).ready(() => {
   // loginUser does a post to our "api/login" route and if successful, redirects us the the members page
   function loginUser(email, password) {
     $.post("/api/login", {
-        email: email,
-        password: password
-      })
-      .then((userInfo) => {
+      email: email,
+      password: password
+    })
+      .then(userInfo => {
         //  if user is a brewery then go to /brewer-page
-        let isABrewery = (userInfo.usertype === "brewRy");
+        const isABrewery = userInfo.usertype === "brewRy";
         if (isABrewery) {
-          window.location.replace("/brewer-page")
+          window.location.replace("/brewer-page");
         }
         //  else direct user to /members
         else {
