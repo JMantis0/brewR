@@ -107,51 +107,29 @@ $(document).ready(() => {
     });
   }
 
-  // This function grabs Brewerybeers from the database and updates the view
-  // function getTaplist(category) {
-  //   let categoryString = category || "";
-  //   if (categoryString) {
-  //     categoryString = "/category/" + categoryString;
-  //   }
-  //   $.get("/api/hours" + categoryString, data => {
-  //     taplist = data;
-  //     for (let i = 0; i < data.length; i++) {
-  //       const tapListItem = $("<h5>");
-  //       const deleteOntap = $("<button>");
-  //       const addBreak = $("<br>")
+  // Brewery info code
 
-  //       tapListItem.text(data[i].beername);
-  //       tapListItem.attr("id", "list-item-" + data[i].id);
-  //       tapListItem.addClass("listItem")
+  $("#breweryInfoButton").on("click", event => {
+    event.preventDefault();
 
-  //       deleteOntap.text("x");
-  //       deleteOntap.addClass("delete btn btn-danger");
+    const breweryName = $("#brewery-name");
+    const breweryAddress = $("#brewery-address");
+    const breweryPhone = $("#phone-number");
+    const breweryDogs = $("#dogs-allowed");
 
-  //       $("#ontapProfile").append(tapListItem);
-  //       $("#list-item-" + data[i].id).append(deleteOntap);
-  //       $(".listItem").append(addBreak)
-  //       deleteOntap.data("data", data[i]);
-  //     }
-  //   });
-  // }
-  // getTaplist();
+    const infoValue = {
+      breweryname: breweryName.val().trim(),
+      address: breweryAddress.val().trim(),
+      phonenumber: breweryPhone.val().trim(),
+      dogs: breweryDogs.val().trim()
+    };
+    submitInfo(infoValue);
+  });
 
-  // $(document).on("click", "button.delete", handleTaplistDelete);
-
-  // This function does an API call to delete posts
-  // function deleteTaplist(id) {
-  //   $.ajax({
-  //     method: "DELETE",
-  //     url: "/api/hours/" + id
-  //   }).then(() => {
-  //     location.reload();
-  //   });
-  // }
-
-  // This function figures out which Brewerybeer we want to delete and then calls
-  // deleteTaplist
-  // function handleTaplistDelete() {
-  //   const currentBrewerybeer = $(this).data("data");
-  //   deleteTaplist(currentBrewerybeer.id);
-  // }
+  // Submits new info and brings user to brewer-page page upon completion
+  function submitInfo(Breweryinfo) {
+    $.post("/api/info/", Breweryinfo, () => {
+      window.location.href = "/brewer-page";
+    });
+  }
 });
