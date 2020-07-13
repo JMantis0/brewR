@@ -136,7 +136,6 @@ module.exports = function(app) {
         } 
       })
       .then(count => {
-        console.log(count);
         if (count === 0) {
           db.Fave.create({
             UserId: req.user.id,
@@ -171,8 +170,6 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
-    console.log(req.user, "user175");
-    console.log(req.body, "body176");
     db.Post.create({
       // title: req.body.title,
       body: req.body.body,
