@@ -57,7 +57,7 @@ $(document).ready(() => {
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       $("#breweryContainer").empty();
-      $("#breweryContainer").append(`<h1>Search Results:</h1>`);
+      $("#breweryContainer").append(`<h1 id="search-results">Search Results:</h1>`);
       breweries.forEach((brewery) => {
         $("#breweryContainer").append(
           `
