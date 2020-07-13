@@ -1,0 +1,24 @@
+{
+  "development": {
+    "username": "root",
+<<<<<<< HEAD
+    "password": "Amandab1!",
+=======
+    "password": "+J9517mm",
+>>>>>>> master
+    "database": "brewR",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "whitecat1",
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "use_env_variable": "JAWSDB_URL",
+    "dialect": "mysql"
+  }
+}
