@@ -56,6 +56,12 @@ h2 {
   margin-left: 25pt;
 }
 
+/* #favoriteColumn {
+  font-family: 'Bevan', cursive;
+  font-size: 28pt;
+  margin-top: 30pt;
+} */
+
 .card {
   margin: 5pt;
 }
@@ -67,6 +73,15 @@ h2 {
 .delete {
   float: right;
   padding: 1 px;
+}
+
+.support {
+  background-color: white;
+  margin-top: 25pt;
+  font-family: 'Roboto Slab', serif;
+  font-size: 24pt;
+  opacity: 0.8;
+  color: black;
 }
 
 /* #breweryContainer {
