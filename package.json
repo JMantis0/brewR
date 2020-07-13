@@ -22,10 +22,7 @@
     "express-session": "^1.17.1",
     "mysql": "^2.18.1",
     "mysql2": "^1.7.0",
-<<<<<<< HEAD
     "particles.js": "^2.0.0",
-=======
->>>>>>> acbe14e035e2fd272e47bc56b9b051d5fc7b5e7f
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "sequelize": "^5.22.3"
