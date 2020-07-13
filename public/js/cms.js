@@ -48,8 +48,44 @@ $(document).ready(() => {
 
   // Submits a new post and brings user to blog page upon completion
   function submitPost(Post) {
-    $.post("/api/posts/", Post, () => {
-      window.location.href = "/members";
+    $.post("/api/posts/", Post, (newPost) => {
+      
+      // window.location.href = "/members";
+
+      
+      //  Render new post to the page
+      //  newcardpostthing)
+    
+    const newPostCard = $("<div>");
+    newPostCard.addClass("card");
+    const newPostCardHeading = $("<div>");
+    newPostCardHeading.addClass("card-header");
+    const deleteBtn = $("<button>");
+    deleteBtn.text("x");
+    deleteBtn.addClass("delete btn btn-danger");
+    const newPostTitle = $("<h2>");
+    const newPostDate = $("<small>");
+    const newPostCategory = $("<h5>");
+    newPostCategory.text(newPost.category);
+    newPostCategory.css({
+      float: "right",
+      "font-weight": "700",
+      "margin-top": "-15px"
+    });
+    const newPostCardBody = $("<div>");
+    newPostCardBody.addClass("card-body");
+    const newPostBody = $("<p>");
+    newPostBody.text(newPost.body);
+    let formattedDate = new Date(newPost.createdAt);
+    newPostDate.text(formattedDate);
+    newPostCardHeading.append(deleteBtn);
+    newPostCardHeading.append(newPostTitle);
+    newPostCardHeading.append(newPostCategory);
+    newPostCardBody.append(newPostBody);
+    newPostCard.append(newPostCardHeading);
+    newPostCard.append(newPostCardBody);
+    newPostCard.data("post", newPost);
+    $(".blog-container").prepend(newPostCard);
     });
   }
 

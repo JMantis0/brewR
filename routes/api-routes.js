@@ -104,24 +104,36 @@ module.exports = function(app) {
   });
 
   app.post("/api/favorite", (req, res) => {
-    console.log(req.body, "107*** apiroutes")
-    console.log(req.body.id)
-    db.Fave.create({
-      UserId: req.user.id,
-      brewer_id: req.body.id,
-      name: req.body.name,
-      brewery_type: req.body.brewery_type,
-      street: req.body.street,
-      city: req.body.city,
-      state: req.body.state,
-      postal_code: req.body.postal_code,
-      country: req.body.country,
-      phone: req.body.phone,
-      website: req.body.website
-    }).then(data => {
-      console.log(data, "what is this 121 apiroutes")
-    });;
-  })
+    //This code checks to see if the a data entry already exists for the brewery.
+    //  If the entry exists, no need to enter it into the database again!
+    
+      db.Fave.count({ 
+        where: 
+        { 
+          brewer_id: req.body.id 
+        } 
+      })
+      .then(count => {
+        console.log(count);
+        if (count === 0) {
+          db.Fave.create({
+            UserId: req.user.id,
+            brewer_id: req.body.id,
+            name: req.body.name,
+            brewery_type: req.body.brewery_type,
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            postal_code: req.body.postal_code,
+            country: req.body.country,
+            phone: req.body.phone,
+            website: req.body.website
+          });
+          console.log(req.body, "Api-routes line 132***")
+          res.json(req.body);
+        }
+      }); 
+  });
 
   // blog posts crud starts here
   // GET route for getting all of the posts
@@ -134,6 +146,7 @@ module.exports = function(app) {
     }).then(userposts => {
       res.json(userposts);
     });
+
   });
 
   // POST route for saving a new post

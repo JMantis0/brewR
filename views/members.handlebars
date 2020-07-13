@@ -21,7 +21,7 @@
     </ul>
     <form class="form-inline my-2 my-lg-0">
 
-      {{!-- <h6> <span class="member-name"></span></h6> --}}
+      <h6><span class="member-name"></span></h6>
 
       <select id="searchType" class="form-control mr-sm-2">
         <option value="">Search by...</option>
@@ -107,9 +107,12 @@
   </div>
   </div>
 </nav>
+<div class="container-fluid">
+
+
 <div class="row">
-  <div class="col-md-3">
-    <div class='container' id='breweryContainer'></div>
+  <div class="col-md-3" id='breweryContainer'>
+    <h3>Search Results</h3>
   </div>
   <div class="col-md-6">
     {{!-- <div class="col-md-5 offset-md-3"> --}}
@@ -128,7 +131,8 @@
       </div>
     </div>
   </div>
-  <div class="col-md-3">This column is for the brewery add list</div>
+  <div class="col-md-3" id="favoriteColumn">This column is for the brewery add list</div>
+</div>
 </div>
 </div>
 
