@@ -23,12 +23,14 @@ n/a
 This application is a resource for beer lovers and brewers alike, to document, compare, and glorify their experiences. A user can login as one of two user types, brewR or drinkR. Once the user enters the site, they are taken to their member profie page or brewr profile page. A drinkR member can search for breweries by name, city, state, zip and brewery type. The search list will return a list of breweries from the brewerdb api. The user can then select breweries to add to one of two lists. One list is for breweries visited, the other is for breweries the drinR would like to visit. The drinkR member can also add beer notes to their personal brewR blog from their member page. Other users can view this members blog and list of breweries through the public facing members feed page. Breweries can log in as a brewR type user and update their profile with brewery information including beer lists, info on their beer including ABV, brewery hours and other pertinent info. Future developments of this app would include: a brewery being able to claim their brewry page, drinkR users being able to friend other users and follow breweries, user ability to add additional profile informatin including profile picture. 
 
 # Screenshot of application in use:
+![Screen Shot 2020-07-12 at 5 30 33 PM](https://user-images.githubusercontent.com/61023907/87260260-b4116000-c465-11ea-9406-f86f9c61626b.png)
+
 
 
 # Contributions: 
 Contributors: Joseph Baca, Jesse Mazur,  Kait Kelly. 
 
-Technology used: Node.js, NPM's(mysql, envdot, sequelize), MySQL, MySQL Workbench, HTML, Javascript, CSS, Brewerdb api, ajax
+Technology used: Node.js, NPM's(mysql, envdot, sequelize), MySQL, MySQL2, MySQL Workbench, HTML, Javascript, CSS, Brewerdb api, axios, particle.js
 
 # Tests: 
 ⚙️ No tests have been performed on this application. 
