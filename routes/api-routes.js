@@ -103,7 +103,29 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/favorite", (req, res) => {
+  app.delete("/api/members/favoriteDelete/:brewerID", (req, res) => {
+    db.Fave.destroy({
+      where: {
+        brewer_id: req.params.brewerID
+      }
+    });
+    res.sendStatus(200);
+  });
+
+  //  Route sends back favorites for user making the request
+
+  app.get("/api/members/loadFavorites", (req, res) => {
+    
+    db.Fave.findAll({
+      where: {
+        UserID: req.user.id
+      }
+    }).then(userFaves => {
+      res.send(userFaves);
+    });
+  })
+
+  app.post("/api/members/favoriteAdd", (req, res) => {
     //This code checks to see if the a data entry already exists for the brewery.
     //  If the entry exists, no need to enter it into the database again!
     
@@ -129,7 +151,6 @@ module.exports = function(app) {
             phone: req.body.phone,
             website: req.body.website
           });
-          console.log(req.body, "Api-routes line 132***")
           res.json(req.body);
         }
       }); 
@@ -151,6 +172,8 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
+    console.log(req.user, "user175");
+    console.log(req.body, "body176");
     db.Post.create({
       // title: req.body.title,
       body: req.body.body,
