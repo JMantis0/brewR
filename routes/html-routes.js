@@ -51,7 +51,7 @@ module.exports = function(app) {
   //     res.render("member-feed", { Post: obj });
   //   });
   // });
-  
+
   // brewer page
   app.get("/brewer-page", isAuthenticated, (req, res) => {
     res.render("brewer-page");
@@ -60,5 +60,10 @@ module.exports = function(app) {
   // brewer feed
   app.get("/brewer-feed", isAuthenticated, (req, res) => {
     res.render("brewer-feed");
+  });
+
+  // support page
+  app.get("/support", (req, res) => {
+    res.render("support");
   });
 };
