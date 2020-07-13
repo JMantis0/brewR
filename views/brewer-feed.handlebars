@@ -19,28 +19,73 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" id="search-button">Search</button>
-    </form>
   </div>
 </nav>
 
-<div class="row">
-  <div class="col-7"></div>
-
-  <div class="col-5 alert alert-dark mt-3" role="alert">
-    <div class="row">
-      <h2>On Tap</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <div class="row">
+        <div class="col-12" id="breweryName"></div>
+      </div>
+      <div class="col-6 alert alert-dark mt-3" role="alert">
+        <div class="row">
+          <div class="col-12" id="breweryAddress"></div>
+        </div>
+        <div class="row">
+          <div class="col-12" id="breweryPhone"></div>
+        </div>
+        <div class="row">
+          <h7 class="col-6">Dogs: </h7>
+          <div class="col-6" id="breweryDogs"></div>
+        </div>
+      </div>
     </div>
-    <div class="col-12 row">
-      <h5 class="col-4">Name</h5>
-      <h5 class="col-4">Style</h5>
-      <h5 class="col-3">Hops</h5>
-      <h5 class="col-1">ABV%</h5>
+
+    <div class="col-5 alert alert-dark mt-3" role="alert">
+      <div class="row">
+        <h7 class="col-6">Monday: </h7>
+        <div id="mondayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Tuesday: </h7>
+        <div id="tuesdayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Wednesday: </h7>
+        <div id="wednesdayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Thursday: </h7>
+        <div id="thursdayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Friday: </h7>
+        <div id="fridayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Saturday: </h7>
+        <div id="saturdayFeed"></div>
+      </div>
+      <div class="row">
+        <h7 class="col-6">Sunday: </h7>
+        <div id="sundayFeed"></div>
+      </div>
     </div>
 
-    <div class="row col-12" id="ontapFeed">
+    <div class="col-7 alert alert-dark mt-3" role="alert">
+      <div class="row">
+        <h2>On Tap</h2>
+      </div>
+      <div class="col-12 row">
+        <h5 class="col-4">Name</h5>
+        <h5 class="col-4">Style</h5>
+        <h5 class="col-3">Hops</h5>
+        <h5 class="col-1">ABV%</h5>
+      </div>
+
+      <div class="row col-12" id="ontapFeed">
+      </div>
     </div>
   </div>
 </div>
