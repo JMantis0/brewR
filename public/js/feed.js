@@ -8,7 +8,6 @@ $(document).ready(() => {
 
   // This function grabs posts from the database and updates the view
   function getPosts() {
-    
     $.get("/api/posts", data => {
       posts = data;
       if (!posts || !posts.length) {
@@ -25,10 +24,8 @@ $(document).ready(() => {
       method: "DELETE",
       url: "/api/posts/" + id
     }).then(() => {
-      
       //  Removes the element containing the post (card element)
       postCardElement.remove();
-
     });
   }
 
@@ -67,7 +64,7 @@ $(document).ready(() => {
     newPostCardBody.addClass("card-body");
     const newPostBody = $("<p>");
     newPostBody.text(post.body);
-    let formattedDate = new Date(post.createdAt);
+    const formattedDate = new Date(post.createdAt);
     newPostDate.text(formattedDate);
     newPostCardHeading.append(deleteBtn);
     newPostCardHeading.append(newPostTitle);
@@ -86,7 +83,9 @@ $(document).ready(() => {
       .parent()
       .parent()
       .data("post");
-      cardElement = $(this).parent().parent();
+    cardElement = $(this)
+      .parent()
+      .parent();
     deletePost(cardElement, currentPost.id);
   }
 
@@ -114,7 +113,7 @@ $(document).ready(() => {
     blogContainer.append(messageH2);
   }
 
-//   This function handles reloading new posts when the category changes
+  //   This function handles reloading new posts when the category changes
   // function handleCategoryChange() {
   //   const newPostCategory = $(this).val();
   //   getPosts(newPostCategory);

@@ -32,26 +32,6 @@ module.exports = function(app) {
     res.render("member-feed");
   });
 
-  // app.get("/cms", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/cms.html"));
-  // });
-
-  // // member feed blog posts (public facing)
-  // app.get("/member-feed", (req, res) => {
-  //   console.log("success");
-  //   db.Post.findAll({}).then(data => {
-  //     console.log(data, "39");
-  //     const x = data.map(packet => packet.dataValues.body);
-  //     console.log(x, "41");
-  //     obj = [];
-  //     for (message of x) {
-  //       obj.push({ body: message });
-  //     }
-  //     console.log(obj, "46");
-  //     res.render("member-feed", { Post: obj });
-  //   });
-  // });
-
   // brewer page
   app.get("/brewer-page", isAuthenticated, (req, res) => {
     res.render("brewer-page");
@@ -63,7 +43,7 @@ module.exports = function(app) {
   });
 
   // support page
-  app.get("/support", (req, res) => {
+  app.get("/support", isAuthenticated, (req, res) => {
     res.render("support");
   });
 };

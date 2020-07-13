@@ -106,33 +106,30 @@ module.exports = function(app) {
   app.post("/api/favorite", (req, res) => {
     //This code checks to see if the a data entry already exists for the brewery.
     //  If the entry exists, no need to enter it into the database again!
-    
-      db.Fave.count({ 
-        where: 
-        { 
-          brewer_id: req.body.id 
-        } 
-      })
-      .then(count => {
-        console.log(count);
-        if (count === 0) {
-          db.Fave.create({
-            UserId: req.user.id,
-            brewer_id: req.body.id,
-            name: req.body.name,
-            brewery_type: req.body.brewery_type,
-            street: req.body.street,
-            city: req.body.city,
-            state: req.body.state,
-            postal_code: req.body.postal_code,
-            country: req.body.country,
-            phone: req.body.phone,
-            website: req.body.website
-          });
-          console.log(req.body, "Api-routes line 132***")
-          res.json(req.body);
-        }
-      }); 
+    db.Fave.count({
+      where: {
+        brewer_id: req.body.id
+      }
+    }).then(count => {
+      console.log(count);
+      if (count === 0) {
+        db.Fave.create({
+          UserId: req.user.id,
+          brewer_id: req.body.id,
+          name: req.body.name,
+          brewery_type: req.body.brewery_type,
+          street: req.body.street,
+          city: req.body.city,
+          state: req.body.state,
+          postal_code: req.body.postal_code,
+          country: req.body.country,
+          phone: req.body.phone,
+          website: req.body.website
+        });
+        console.log(req.body, "Api-routes line 132***");
+        res.json(req.body);
+      }
+    });
   });
 
   // blog posts crud starts here
