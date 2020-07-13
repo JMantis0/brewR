@@ -37,6 +37,25 @@ h2 {
   font-size: 24pt;
 }
 
+#brewr-login {
+  font-family: 'Bevan', cursive;
+  font-size: 32pt;
+  margin-top: 30pt;
+}
+
+#brewr-signup {
+  font-family: 'Bevan', cursive;
+  font-size: 28pt;
+  margin-top: 30pt;
+}
+
+#search-results {
+  font-family: 'Bevan', cursive;
+  font-size: 28pt;
+  margin-top: 30pt;
+  margin-left: 25pt;
+}
+
 .card {
   margin: 5pt;
 }
