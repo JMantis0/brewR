@@ -146,7 +146,6 @@ module.exports = function(app) {
     }).then(userposts => {
       res.json(userposts);
     });
-
   });
 
   // POST route for saving a new post
@@ -246,4 +245,5 @@ module.exports = function(app) {
       res.json(data);
     });
   });
+  
 };
