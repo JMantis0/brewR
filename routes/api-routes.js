@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -90,7 +90,7 @@ module.exports = function (app) {
     axios
       .get(
         `https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${
-        req.params.search
+          req.params.search
         }`
       )
       .then(brewerySearch => {
@@ -115,7 +115,6 @@ module.exports = function (app) {
   //  Route sends back favorites for user making the request
 
   app.get("/api/members/loadFavorites", (req, res) => {
-    
     db.Fave.findAll({
       where: {
         UserID: req.user.id
@@ -123,36 +122,34 @@ module.exports = function (app) {
     }).then(userFaves => {
       res.send(userFaves);
     });
-  })
+  });
 
   app.post("/api/members/favoriteAdd", (req, res) => {
     //This code checks to see if the a data entry already exists for the brewery.
     //  If the entry exists, no need to enter it into the database again!
-    
-      db.Fave.count({ 
-        where: 
-        { 
-          brewer_id: req.body.id 
-        } 
-      })
-      .then(count => {
-        if (count === 0) {
-          db.Fave.create({
-            UserId: req.user.id,
-            brewer_id: req.body.id,
-            name: req.body.name,
-            brewery_type: req.body.brewery_type,
-            street: req.body.street,
-            city: req.body.city,
-            state: req.body.state,
-            postal_code: req.body.postal_code,
-            country: req.body.country,
-            phone: req.body.phone,
-            website: req.body.website
-          });
-          res.json(req.body);
-        }
-      }); 
+
+    db.Fave.count({
+      where: {
+        brewer_id: req.body.id
+      }
+    }).then(count => {
+      if (count === 0) {
+        db.Fave.create({
+          UserId: req.user.id,
+          brewer_id: req.body.id,
+          name: req.body.name,
+          brewery_type: req.body.brewery_type,
+          street: req.body.street,
+          city: req.body.city,
+          state: req.body.state,
+          postal_code: req.body.postal_code,
+          country: req.body.country,
+          phone: req.body.phone,
+          website: req.body.website
+        });
+        res.json(req.body);
+      }
+    });
   });
 
   // blog posts crud starts here

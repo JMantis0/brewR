@@ -15,9 +15,11 @@ $(document).ready(() => {
   // Getting jQuery references to the post body
   const bodyInput = $("#body");
   const cmsForm = $("#cms");
+
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", event => {
     event.preventDefault();
+
     // Wont submit the post if we are missing a body
     if (!bodyInput.val().trim()) {
       return;
@@ -26,58 +28,47 @@ $(document).ready(() => {
     const newPost = {
       body: bodyInput.val().trim()
     };
-
-    console.log(newPost);
-
-    // If we're updating a post run updatePost to update a post
-    // Otherwise run submitPost to create a whole new post
-    // if (updating) {
-    //   newPost.id = postId;
-    //   updatePost(newPost);
-    // } else {
-    // }
     submitPost(newPost);
   });
 
-  function clear(){ 
-    document.getElementById('body').value='';
-    }
+  function clear() {
+    document.getElementById("body").value = "";
+  }
+
   // Submits a new post and brings user to blog page upon completion
   function submitPost(Post) {
-    $.post("/api/posts/", Post, (newPost) => {
-      
-      // window.location.href = "/members";
-
-    const newPostCard = $("<div>");
-    newPostCard.addClass("card");
-    const newPostCardHeading = $("<div>");
-    newPostCardHeading.addClass("card-header");
-    const deleteBtn = $("<button>");
-    deleteBtn.text("x");
-    deleteBtn.addClass("delete btn btn-danger");
-    const newPostTitle = $("<h2>");
-    const newPostDate = $("<small>");
-    const newPostCategory = $("<h5>");
-    newPostCategory.text(newPost.category);
-    newPostCategory.css({
-      float: "right",
-      "font-weight": "700",
-      "margin-top": "-15px"
-    });
-    const newPostCardBody = $("<div>");
-    newPostCardBody.addClass("card-body");
-    const newPostBody = $("<p>");
-    newPostBody.text(newPost.body);
-    let formattedDate = new Date(newPost.createdAt);
-    newPostDate.text(formattedDate);
-    newPostCardHeading.append(deleteBtn);
-    newPostCardHeading.append(newPostTitle);
-    newPostCardHeading.append(newPostCategory);
-    newPostCardBody.append(newPostBody);
-    newPostCard.append(newPostCardHeading);
-    newPostCard.append(newPostCardBody);
-    newPostCard.data("post", newPost);
-    $(".blog-container").prepend(newPostCard);
+    $.post("/api/posts/", Post, newPost => {
+      //  Render new post to the page
+      const newPostCard = $("<div>");
+      newPostCard.addClass("card");
+      const newPostCardHeading = $("<div>");
+      newPostCardHeading.addClass("card-header");
+      const deleteBtn = $("<button>");
+      deleteBtn.text("x");
+      deleteBtn.addClass("delete btn btn-danger");
+      const newPostTitle = $("<h2>");
+      const newPostDate = $("<small>");
+      const newPostCategory = $("<h5>");
+      newPostCategory.text(newPost.category);
+      newPostCategory.css({
+        float: "right",
+        "font-weight": "700",
+        "margin-top": "-15px"
+      });
+      const newPostCardBody = $("<div>");
+      newPostCardBody.addClass("card-body");
+      const newPostBody = $("<p>");
+      newPostBody.text(newPost.body);
+      const formattedDate = new Date(newPost.createdAt);
+      newPostDate.text(formattedDate);
+      newPostCardHeading.append(deleteBtn);
+      newPostCardHeading.append(newPostTitle);
+      newPostCardHeading.append(newPostCategory);
+      newPostCardBody.append(newPostBody);
+      newPostCard.append(newPostCardHeading);
+      newPostCard.append(newPostCardBody);
+      newPostCard.data("post", newPost);
+      $(".blog-container").prepend(newPostCard);
     });
 
     clear();
@@ -96,5 +87,4 @@ $(document).ready(() => {
       }
     });
   }
-
 });
