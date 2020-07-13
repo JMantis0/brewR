@@ -1,27 +1,28 @@
+
 module.exports = function(sequelize, DataTypes) {
-  const Brewerybeer = sequelize.define("Brewerybeer", {
-    beername: {
+  const Breweryinfo = sequelize.define("Breweryinfo", {
+    breweryname: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    beerstyle: {
+    address: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    beerabv: {
-      type: DataTypes.DECIMAL,
+    phonenumber: {
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1]
       }
     },
-    beerhops: {
+    dogs: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -30,12 +31,12 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Brewerybeer.associate = function(models) {
-    Brewerybeer.belongsTo(models.User, {
+  Breweryinfo.associate = function(models) {
+    Breweryinfo.belongsTo(models.User, {
       foreignKey: {
         allowNull: false
       }
     });
   };
-  return Brewerybeer;
+  return Breweryinfo;
 };
