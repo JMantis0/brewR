@@ -57,9 +57,11 @@ $(document).ready(() => {
     //  breweries variable is coming from line 72 in api-routes.js
     .then(function (breweries) {
       $("#breweryContainer").empty();
+      $("#breweryContainer").append(`<h1>Search Results:</h1>`);
       breweries.forEach((brewery) => {
         $("#breweryContainer").append(
-          `<div class="card" id="${brewery.id}" style="width: 100%;">
+          `
+          <div class="card" id="${brewery.id}" style="width: 100%;">
             <div class="card-body">
               <h5 class="card-title">${brewery.name}</h5>
               <h6 class="card-subtitle mb-2 text-muted">Type: ${brewery.brewery_type}</h6>
@@ -69,7 +71,8 @@ $(document).ready(() => {
                 <button class="btn btn-primary" id="faveAddButton${brewery.id}" type="submit">Add</button>
               </div>
             </div>
-          </div>`);
+          </div>
+          `);
 
           //Now add listeners to the buttons on each card
         $(`#faveAddButton${brewery.id}`).on("click", function(event) {
