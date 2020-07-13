@@ -3,7 +3,7 @@ const db = require("../models");
 const passport = require("../config/passport");
 const axios = require("axios");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error
@@ -90,7 +90,7 @@ module.exports = function(app) {
     axios
       .get(
         `https://api.openbrewerydb.org/breweries${typeMap[req.params.type]}=${
-          req.params.search
+        req.params.search
         }`
       )
       .then(brewerySearch => {
@@ -204,7 +204,7 @@ module.exports = function(app) {
 
   //Brewery routes
   // GET route for retrieiving On Tap List for specific user
-  app.get("/api/taplist/", (req, res) => {
+  app.get("/api/taplist", (req, res) => {
     db.Brewerybeer.findAll({
       where: {
         UserId: req.user.id
@@ -240,7 +240,7 @@ module.exports = function(app) {
 
   // Hours of Operation routes
   // GET route for retrieving hours for specific user
-  app.get("/api/hours/", (req, res) => {
+  app.get("/api/hours", (req, res) => {
     db.Breweryhour.findAll({
       where: {
         UserId: req.user.id
@@ -250,7 +250,7 @@ module.exports = function(app) {
     });
   });
 
-  // POST route for saving a beer to On Tap List
+  // POST route for saving hours to db
   app.post("/api/hours", (req, res) => {
     db.Breweryhour.create({
       monday: req.body.monday,
@@ -261,6 +261,53 @@ module.exports = function(app) {
       saturday: req.body.saturday,
       sunday: req.body.sunday,
       UserId: req.user.id
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // PUT route for updating hours
+  app.put("/api/hours", (req, res) => {
+    db.Breweryhour.update(req.body, {
+      where: {
+        id: req.body.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // Brewery Information
+  // GET route for retrieving brewery info for specific user
+  app.get("/api/info", (req, res) => {
+    db.Breweryinfo.findAll({
+      where: {
+        UserId: req.user.id
+      }
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // POST route for saving brewery info to On Tap List
+  app.post("/api/info", (req, res) => {
+    db.Breweryinfo.create({
+      breweryname: req.body.breweryname,
+      address: req.body.address,
+      phonenumber: req.body.phonenumber,
+      dogs: req.body.dogs,
+      UserId: req.user.id
+    }).then(data => {
+      res.json(data);
+    });
+  });
+
+  // PUT route for updating hours
+  app.put("/api/info", (req, res) => {
+    db.Breweryinfo.update(req.body, {
+      where: {
+        id: req.body.id
+      }
     }).then(data => {
       res.json(data);
     });
