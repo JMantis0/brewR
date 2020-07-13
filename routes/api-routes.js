@@ -103,33 +103,57 @@ module.exports = function(app) {
       });
   });
 
-  app.post("/api/favorite", (req, res) => {
-    //This code checks to see if the a data entry already exists for the brewery.
-    //  If the entry exists, no need to enter it into the database again!
-    db.Fave.count({
+  app.delete("/api/members/favoriteDelete/:brewerID", (req, res) => {
+    db.Fave.destroy({
       where: {
-        brewer_id: req.body.id
-      }
-    }).then(count => {
-      console.log(count);
-      if (count === 0) {
-        db.Fave.create({
-          UserId: req.user.id,
-          brewer_id: req.body.id,
-          name: req.body.name,
-          brewery_type: req.body.brewery_type,
-          street: req.body.street,
-          city: req.body.city,
-          state: req.body.state,
-          postal_code: req.body.postal_code,
-          country: req.body.country,
-          phone: req.body.phone,
-          website: req.body.website
-        });
-        console.log(req.body, "Api-routes line 132***");
-        res.json(req.body);
+        brewer_id: req.params.brewerID
       }
     });
+    res.sendStatus(200);
+  });
+
+  //  Route sends back favorites for user making the request
+
+  app.get("/api/members/loadFavorites", (req, res) => {
+    
+    db.Fave.findAll({
+      where: {
+        UserID: req.user.id
+      }
+    }).then(userFaves => {
+      res.send(userFaves);
+    });
+  })
+
+  app.post("/api/members/favoriteAdd", (req, res) => {
+    //This code checks to see if the a data entry already exists for the brewery.
+    //  If the entry exists, no need to enter it into the database again!
+    
+      db.Fave.count({ 
+        where: 
+        { 
+          brewer_id: req.body.id 
+        } 
+      })
+      .then(count => {
+        console.log(count);
+        if (count === 0) {
+          db.Fave.create({
+            UserId: req.user.id,
+            brewer_id: req.body.id,
+            name: req.body.name,
+            brewery_type: req.body.brewery_type,
+            street: req.body.street,
+            city: req.body.city,
+            state: req.body.state,
+            postal_code: req.body.postal_code,
+            country: req.body.country,
+            phone: req.body.phone,
+            website: req.body.website
+          });
+          res.json(req.body);
+        }
+      }); 
   });
 
   // blog posts crud starts here
@@ -147,6 +171,8 @@ module.exports = function(app) {
 
   // POST route for saving a new post
   app.post("/api/posts", (req, res) => {
+    console.log(req.user, "user175");
+    console.log(req.body, "body176");
     db.Post.create({
       // title: req.body.title,
       body: req.body.body,

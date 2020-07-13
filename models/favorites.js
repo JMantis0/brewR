@@ -1,7 +1,7 @@
 module.exports = function(sequelize, DataTypes) {
   const Fave = sequelize.define("Fave", {
     brewer_id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.TEXT,
       allowNull: false
     },
     name: {
