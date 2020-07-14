@@ -85,8 +85,4 @@ $(document).ready(() => {
       }
     });
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 });

@@ -101,8 +101,4 @@ $(document).ready(() => {
     );
     blogContainer.append(messageH2);
   }
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 });
