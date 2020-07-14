@@ -15,11 +15,9 @@ $(document).ready(() => {
   // Getting jQuery references to the post body
   const bodyInput = $("#body");
   const cmsForm = $("#cms");
-
   // Adding an event listener for when the form is submitted
   $(cmsForm).on("submit", event => {
     event.preventDefault();
-
     // Wont submit the post if we are missing a body
     if (!bodyInput.val().trim()) {
       return;
@@ -87,4 +85,8 @@ $(document).ready(() => {
       }
     });
   }
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 });
