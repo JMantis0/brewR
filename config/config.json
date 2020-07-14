@@ -1,11 +1,7 @@
 {
   "development": {
     "username": "root",
-<<<<<<< Updated upstream
     "password": null,
-=======
-    "password": "whitecat1",
->>>>>>> Stashed changes
     "database": "brewR",
     "host": "127.0.0.1",
     "dialect": "mysql"
