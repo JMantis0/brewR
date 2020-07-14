@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     beerabv: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 1),
       allowNull: false,
       validate: {
         len: [1]
