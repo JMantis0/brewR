@@ -42,11 +42,11 @@ $(document).ready(() => {
         }
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch(handleSignUpErr);
   }
 
-  function handleLoginErr(err) {
-    $("#alert .msg").text(err.responseJSON);
+  function handleSignUpErr(err) {
+    $("#alert .msg").text((`Account ${err.responseJSON.errors[0].instance.email} already exists`));
     $("#alert").fadeIn(500);
   }
 });
