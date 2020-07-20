@@ -40,8 +40,11 @@ $(document).ready(() => {
         }
         // If there's an error, log the error
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(handleLoginErr);
+  }
+
+  function handleLoginErr(err) {
+    $("#alert .msg").text((`Invalid email/password combination`));
+    $("#alert").fadeIn(500);
   }
 });
