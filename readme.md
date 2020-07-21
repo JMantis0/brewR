@@ -1,4 +1,4 @@
-# brewR 
+# [brewR](https://brewrs.herokuapp.com/)
 user story: As a craft beer aficianado, I want a resource that allows me to search breweries to visit and track breweries that I have already visited with “checkins”,
 so that I can share beer notes, stories and favorites with fellow users and friends.
 
@@ -6,7 +6,7 @@ so that I can share beer notes, stories and favorites with fellow users and frie
 brewR 
 
 # Link to deployed site on Heroku:
-https://project-two-root.herokuapp.com/
+https://brewrs.herokuapp.com/
 
 # Link to Repo:
 🚀 https://github.com/JMantis0/brewR
