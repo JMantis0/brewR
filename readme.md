@@ -25,7 +25,7 @@ This application is a resource for beer lovers and brewers alike, to document, c
 
 - A brewery being able to claim their brewry page.
 - DrinkR users being able to friend other users and follow breweries.
-- User ability to add additional profile informatin including profile picture. 
+- User ability to add additional profile information including profile picture. 
 
 # Contributions: 
 Contributors: Joseph Baca, Jesse Mazur,  Kait Kelly. 
